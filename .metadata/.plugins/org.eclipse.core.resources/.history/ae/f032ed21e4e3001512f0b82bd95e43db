@@ -1,9 +1,0 @@
-package mum.edu.cs.controller;
-
-import org.springframework.stereotype.Controller;
-
-@Controller(value="/teacher")
-public class TeachersController {
-	
-
-}
