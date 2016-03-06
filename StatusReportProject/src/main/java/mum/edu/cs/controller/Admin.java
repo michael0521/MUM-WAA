@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * Created by su on 3/6/16.
+ *
+ * Admin controller used to handle the request about the admin
+ *
  */
 
 @Controller
