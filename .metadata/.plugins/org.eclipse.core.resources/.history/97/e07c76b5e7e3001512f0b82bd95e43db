@@ -1,0 +1,7 @@
+package mum.edu.cs.domain;
+
+public class Lecture {
+	
+	private List<Student> students;
+
+}

@@ -1,0 +1,5 @@
+package mum.edu.cs.domain;
+
+public class Lecture {
+
+}

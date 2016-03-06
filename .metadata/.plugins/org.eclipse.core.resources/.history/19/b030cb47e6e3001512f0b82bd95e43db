@@ -1,0 +1,13 @@
+package mum.edu.cs.service;
+
+import java.util.List;
+
+public class TeacherService {
+	
+	List<String> getAllLectures(){
+		return null;
+	};
+
+	
+	
+}

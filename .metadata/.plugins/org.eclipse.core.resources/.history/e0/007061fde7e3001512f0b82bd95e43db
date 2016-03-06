@@ -1,0 +1,9 @@
+package mum.edu.cs.domain;
+
+import java.util.List;
+
+public class Student {
+	private String studentId;
+	private String name;
+	private List<Report> reports;
+}
