@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -41,6 +45,10 @@ th {
 <body>
 
 	<div>
+	
+	<spring:url var = "saveReport" value="/saveReport" />
+	
+	<form:form modelAttribute="newReport"  action= "${saveReport}"  method="post">
 		<table>
 			<tr>
 				<th>Tasks</th>
@@ -48,32 +56,31 @@ th {
 				<th>Status</th>
 			</tr>
 			<tr>
-				<td><input type="text" /></td>
-				<td><input type="text" /></td>
-				<td><input type="text" /></td>
+				<td><form:input path="task"/></td>
+				<td><form:input path="time" /></td>
+				<td><form:input path="status" /></td>
 			</tr>
 		</table>
 
 		<br />
 		<p>Notes:</p>
 
-		<textarea rows="20" cols="100" name="notes" >
-		</textarea>
+		<form:textarea rows="20" cols="100" path="notes" />
 
 		<br />
 		<p>SCI/CBE Point:</p>
 
-		<textarea rows="20" cols="100" name="sci">
-		</textarea>
+		<form:textarea rows="20" cols="100" path="sci" />
 		
 		<br/>
-		<p>Signed: <input width="50" type="text" name="sign" /></p>
-		<p>Date:&nbsp;&nbsp;&nbsp; <input width="100px" type="date" /></p>
+		<p>Signed: <form:input width="50" type="text" path="sign" /></p>
+		<p>Date:&nbsp;&nbsp;&nbsp; <form:input width="100px" type="date" path="date"/></p>
 		
 		<br/>
 		
 		<input type="submit" style="margin-left:70%"/>
 		
+		</form:form>
 	</div>
 </body>
 </html>
