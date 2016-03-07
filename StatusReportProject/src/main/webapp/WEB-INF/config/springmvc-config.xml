@@ -54,4 +54,11 @@
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+    
+    <bean id="inMemoryTeacherDAOImpl" class="mum.edu.cs.dao.InMemoryTeacherDAOImpl"/>
+
+    
+	<bean id="teacherService" class="mum.edu.cs.service.TeacherService">
+		<property name="teacherDAO" ref="inMemoryTeacherDAOImpl"/>
+	</bean>
 </beans>
