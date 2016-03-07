@@ -2,6 +2,8 @@ package mum.edu.cs.domain;
 
 import java.io.Serializable;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Report implements Serializable {
 	
 	private static final long serialVersionUID = 1520961851058396784L;
@@ -9,19 +11,27 @@ public class Report implements Serializable {
 	private float grade;
 	private String comment;
 	private String time;
+	
+	
+	private String task;
+	
+	private String status;
+	
+	@NotEmpty(message="notes.empty")
+	private String notes;
+	
+	@NotEmpty(message="sci.empty")
+	private String sci;
+	private String sign;
+	private String date;
+	
+	
 	public String getTime() {
 		return time;
 	}
 	public void setTime(String time) {
 		this.time = time;
 	}
-	private String task;
-	private String status;
-	private String notes;
-	private String sci;
-	private String sign;
-	private String date;
-	
 	
 	public float getGrade() {
 		return grade;

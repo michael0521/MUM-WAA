@@ -63,13 +63,18 @@ th {
 		</table>
 
 		<br />
+		
 		<p>Notes:</p>
-
+		<div style="text-align: center;">
+ 				<form:errors path="notes" cssStyle="color : red;" /> 
+		</div>
 		<form:textarea rows="20" cols="100" path="notes" />
 
 		<br />
 		<p>SCI/CBE Point:</p>
-
+		<div style="text-align: center;">
+ 				<form:errors path="sci" cssStyle="color : red;" /> 
+		</div>
 		<form:textarea rows="20" cols="100" path="sci" />
 		
 		<br/>
