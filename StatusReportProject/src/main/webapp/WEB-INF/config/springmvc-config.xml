@@ -20,7 +20,7 @@
     </bean>
 
     <mvc:interceptors>
-        <bean class="mum.edu.cs.util.Intercept.AuthIntercept"></bean>
+        <!--<bean class="mum.edu.cs.util.Intercept.AuthIntercept"></bean>-->
         <bean  class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
             <property name="paramName" value="language"></property>
         </bean>
