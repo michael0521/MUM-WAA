@@ -12,7 +12,8 @@
 <br/>
 <table border = '1'>
 <c:forEach var="lecture" items = "${lectures}" varStatus="lectureIndex">
-		<tr><td> Lecture ${lectureIndex.index + 1} <a href="#">${lecture}</a></td></tr>
+		<tr><td> Lecture ${lectureIndex.index + 1} <a href="reports?lectureId=${lectureIndex.index + 1}">${lecture}</a></td></tr>
+		
 
 </c:forEach>
 </table>	
