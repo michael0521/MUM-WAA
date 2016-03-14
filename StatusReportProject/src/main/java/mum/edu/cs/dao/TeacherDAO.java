@@ -11,8 +11,8 @@ public interface TeacherDAO {
 	
 	abstract List<Lecture> getAllLectures();
 	
-	abstract Map<String, Student> getStudentsByLecture(int lectureId);
+	abstract Map<Integer, Student> getStudentsByLecture(int lectureId);
 
-	abstract Report getReportByStudentAndLecture(int lectureId, String studentId);
+	abstract Report getReportByStudentAndLecture(int lectureId, int studentId);
 
 }

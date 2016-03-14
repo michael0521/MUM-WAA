@@ -34,22 +34,22 @@ public class InMemoryTeacherDAOImpl implements TeacherDAO{
 	}
 
 	@Override
-	public Map<String, Student> getStudentsByLecture(int lectureId) {
+	public Map<Integer, Student> getStudentsByLecture(int lectureId) {
 		List<Lecture> lectures = getAllLectures();
-		Lecture lecture = lectures.get(lectureId);
+		Lecture lecture = lectures.get(lectureId-1);
 		return lecture.getStudents();
 	}
 
 	@Override
-	public Report getReportByStudentAndLecture(int lectureId, String studentId) {
-		Map<String, Student> students = getStudentsByLecture(lectureId);
+	public Report getReportByStudentAndLecture(int lectureId, int studentId) {
+		Map<Integer, Student> students = getStudentsByLecture(lectureId);
 		Student student = students.get(studentId);
 		Report report = student.getReport();
 		return report;
 	}
 	
-	private Map<String, Student> getAllStudents(){
-		Map<String, Student> students = new HashMap<>();
+	private Map<Integer, Student> getAllStudents(){
+		Map<Integer, Student> students = new HashMap<>();
 		
 		Report report1 = new Report();
 		report1.setTask("Task AAA");
@@ -78,9 +78,9 @@ public class InMemoryTeacherDAOImpl implements TeacherDAO{
 		report3.setSign("Qi Cui");
 		report3.setDate(LocalDate.now().toString());
 		
-		students.put("984001", new Student(984001, "Michael", "12345", report1));
-		students.put("984002", new Student(984002, "Eric", "12345", report2));
-		students.put("984003", new Student(984003, "Robert", "12345", report3));
+		students.put(984001, new Student(984001, "Michael", "12345", report1));
+		students.put(984002, new Student(984002, "Eric", "12345", report2));
+		students.put(984003, new Student(984003, "Robert", "12345", report3));
 		
 		return students;
 	}

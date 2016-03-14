@@ -19,13 +19,13 @@ public class TeacherDAOImpl implements TeacherDAO{
 	}
 
 	@Override
-	public Map<String, Student> getStudentsByLecture(int lectureId) {
+	public Map<Integer, Student> getStudentsByLecture(int lectureId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Report getReportByStudentAndLecture(int lectureId, String studentId) {
+	public Report getReportByStudentAndLecture(int lectureId, int studentId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

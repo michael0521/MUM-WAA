@@ -6,7 +6,7 @@ import java.util.Map;
 public class Lecture {
 	
 	private String title;
-	private Map<String, Student> students;
+	private Map<Integer, Student> students;
 	
 	
 	public Lecture(String title) {
@@ -22,11 +22,11 @@ public class Lecture {
 		this.title = title;
 	}
 	
-	public Map<String, Student> getStudents() {
+	public Map<Integer, Student> getStudents() {
 		return students;
 	}
 	
-	public void setStudents(Map<String, Student> students) {
+	public void setStudents(Map<Integer, Student> students) {
 		this.students = students;
 	}
 	

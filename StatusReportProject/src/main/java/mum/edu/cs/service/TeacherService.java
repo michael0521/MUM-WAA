@@ -27,14 +27,14 @@ public class TeacherService {
 
 	
 	public List<Student> getAllStudentsByLecture(int lectureId){
-		Map<String, Student> students = teacherDAO.getStudentsByLecture(lectureId);
+		Map<Integer, Student> students = teacherDAO.getStudentsByLecture(lectureId);
 		List<Student> students2 = new ArrayList<>();
 		students.forEach((k, v) -> students2.add(v));
 		return students2;
 	}
 	
-	public Report getReportByStudentAndLecture(String lectureId, String studentId){
-		Report report = teacherDAO.getReportByStudentAndLecture(Integer.valueOf(lectureId), studentId);
+	public Report getReportByStudentAndLecture(int lectureId, int studentId){
+		Report report = teacherDAO.getReportByStudentAndLecture(lectureId, studentId);
 		return report;
 	}
 
