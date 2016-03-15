@@ -2,7 +2,7 @@ package mum.edu.cs.domain;
 
 import java.util.List;
 
-public class Student extends User{
+public class Student extends User {
 	
 	private int studentId;
 
@@ -33,7 +33,7 @@ public class Student extends User{
 		this.studentId = studentId;
 	}
 
-	
+
 
 //	public List<Report> getReports() {
 //		return reports;

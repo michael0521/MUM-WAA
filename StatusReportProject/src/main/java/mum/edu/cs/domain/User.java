@@ -5,7 +5,9 @@ package mum.edu.cs.domain;
  */
 public class User {
 
-    protected String name;
+    private long id;
+
+    private String name;
 
     protected String password;
 
@@ -23,5 +25,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
