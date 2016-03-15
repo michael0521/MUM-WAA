@@ -3,6 +3,7 @@ package mum.edu.cs.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,7 +55,7 @@ public class TeacherController {
 	
 	@RequestMapping(value = "/lecture/{lectureId}/{studentId}/grade", method = RequestMethod.POST)
 	public String processGradeForm(@PathVariable("lectureId") int lectureId, @PathVariable("studentId") int studentId, 
-			@ModelAttribute("report") Report reportAfterGraded, HttpServletRequest request, Model model){
+			@Valid @ModelAttribute("report") Report reportAfterGraded, HttpServletRequest request, Model model){
 		
 		System.out.println(reportAfterGraded);
 		Report report = teacherService.saveReport(lectureId, studentId, reportAfterGraded);

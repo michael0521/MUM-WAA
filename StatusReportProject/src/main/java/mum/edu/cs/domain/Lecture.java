@@ -3,6 +3,7 @@ package mum.edu.cs.domain;
 import java.util.List;
 import java.util.Map;
 
+
 public class Lecture {
 	
 	private String title;

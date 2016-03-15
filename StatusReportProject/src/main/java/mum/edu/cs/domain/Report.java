@@ -23,7 +23,9 @@ public class Report implements Serializable {
 		this.tasks = tasks;
 	}
 
+	@NotEmpty(message = "grade.empty")
 	private float grade;
+	@NotEmpty(message = "comment.empty")
 	private String comment;
 
 	private Student student;
