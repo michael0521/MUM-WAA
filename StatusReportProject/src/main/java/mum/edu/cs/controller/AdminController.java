@@ -1,5 +1,6 @@
 package mum.edu.cs.controller;
 
+import mum.edu.cs.domain.JsonResponse;
 import mum.edu.cs.domain.Professor;
 import mum.edu.cs.domain.Student;
 import mum.edu.cs.domain.User;
@@ -65,9 +66,15 @@ public class AdminController {
     }
 
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/save-professor", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void   saveUser(){
+    public void   saveProfessor(){
         return;
+    }
+
+    @RequestMapping(value = "/save-student", method = RequestMethod.POST)
+    public @ResponseBody JsonResponse saveStudent(Student student){
+
+        return new JsonResponse();
     }
 }

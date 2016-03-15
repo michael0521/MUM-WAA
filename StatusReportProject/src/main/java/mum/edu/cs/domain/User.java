@@ -7,9 +7,9 @@ public class User {
 
     private long id;
 
-    private String account;
+    protected String account;
 
-    private String password;
+    protected String password;
 
     public String getPassword() {
         return password;

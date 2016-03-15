@@ -15,13 +15,23 @@
 <body>
 
 <form:form action="/save" method="post" modelAttribute="student">
-  <label for="useId"></label>
-  <form:label path="id"></form:label>
   <form:hidden path="id" ></form:hidden>
+  <label for="useId">UseId:</label>
+  <form:input path="id" disabled="true"></form:input>
+
+  <br>
+  <br>
+  <label for="studentId" > StudentId: </label>
+  <form:input path="studentId"></form:input>
   <br>
   <br>
 
+  <label for="name">Name:</label>
+  <form:input path="name"></form:input>
 
+  <br>
+  <br>
+  <input type="submit" value="submit">
 
 </form:form>
 

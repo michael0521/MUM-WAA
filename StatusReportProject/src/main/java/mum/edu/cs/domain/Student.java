@@ -20,7 +20,8 @@ public class Student extends User {
 	public Student(int studentId, String name, String password, Report report) {
 		super();
 		this.studentId = studentId;
-		this.setName(name);
+		this.account = String.valueOf(studentId);
+		this.name = name;
 		this.password = password;
 		this.report = report;
 	}
@@ -52,12 +53,10 @@ public class Student extends User {
 		this.report = report;
 	}
 
-	@Override
 	public String getName() {
 		return name;
 	}
 
-	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
