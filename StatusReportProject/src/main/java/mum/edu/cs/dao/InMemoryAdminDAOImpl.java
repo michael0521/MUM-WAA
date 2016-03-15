@@ -24,6 +24,7 @@ public class InMemoryAdminDAOImpl implements AdminDAO {
         user.setName("suzhaoyang");
         user.setAccount("su");
         user.setPassword("123456");
+        user.setRole("ROLE_ADMIN");
         userList.add(user);
     }
 

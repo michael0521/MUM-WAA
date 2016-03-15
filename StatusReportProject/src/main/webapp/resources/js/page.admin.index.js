@@ -18,7 +18,11 @@ $(document).ready(function () {
             error: function () {
             }
         });
+    }).on("click","#edit",function(e){
+        var url = "/admin/edit/" + e.target.getAttribute("uid");
+        window.location.href = url;
     });
+
 
 
     $("#add_student").on("click", function () {

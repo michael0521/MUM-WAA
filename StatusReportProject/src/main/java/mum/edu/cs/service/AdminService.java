@@ -35,7 +35,7 @@ public class AdminService {
             if(tmp != null && !tmp.getPassword().equals(user.getPassword())){
 
                 PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-                user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             }
         }
 

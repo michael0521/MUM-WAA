@@ -37,12 +37,12 @@ public class ExceptionController {
          return errors;
     }
 
-    @ExceptionHandler(RuntimeException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ResponseBody
-    public String handleException(RuntimeException exception) {
-        return "runtimeException";
-    }
+//    @ExceptionHandler(RuntimeException.class)
+//    @ResponseStatus(HttpStatus.NOT_FOUND)
+//    @ResponseBody
+//    public String handleException(RuntimeException exception) {
+//        return "runtimeException";
+//    }
      
   
   

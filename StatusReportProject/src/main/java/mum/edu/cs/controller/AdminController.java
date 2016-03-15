@@ -5,6 +5,7 @@ import mum.edu.cs.service.AdminService;
 import mum.edu.cs.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ import java.util.Map;
  */
 
 @Controller
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 @RequestMapping("/admin")
 public class AdminController {
 
@@ -56,6 +58,8 @@ public class AdminController {
 
     @RequestMapping(value = "/edit/{uid}", method = RequestMethod.GET)
     public String editUserFrom(@PathVariable("uid") long uid, Model model){
+        Map<String,String> roleMap = roleService.getAllRoleMap();
+        model.addAttribute("roleMap",roleMap);
         User user  = adminService.getUserById(uid);
         model.addAttribute("user",user);
         return JspPath + "userAddForm";
