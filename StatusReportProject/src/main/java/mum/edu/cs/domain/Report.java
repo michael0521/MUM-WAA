@@ -4,10 +4,13 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
-import javax.validation.constraints.Digits;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
 public class Report implements Serializable {
 
@@ -27,13 +30,14 @@ public class Report implements Serializable {
 		this.tasks = tasks;
 	}
 
-	/*@NotEmpty(message = "{grade.empty}")
-	@Max(value=100, message = "{grade.format}")*/
-	private int grade;
-	/*@NotEmpty(message = "{comment.empty}")*/
+	@NotNull(message = "{grade.empty}")
+	@DecimalMax(value = "100.00", message = "{grade.max}")
+	@DecimalMin(value = "60.00", message = "{grade.min}")
+	private BigDecimal grade;
+	@NotEmpty(message = "{comment.empty}")
 	private String comment;
 
-	private Student student;
+	/*private Student student;*/
 
 	@NotEmpty(message = "notes.empty")
 	private String notes;
@@ -47,11 +51,11 @@ public class Report implements Serializable {
 	@NotEmpty(message = "date.empty")
 	private String date;
 
-	public int getGrade() {
+	public BigDecimal getGrade() {
 		return grade;
 	}
 
-	public void setGrade(int grade) {
+	public void setGrade(BigDecimal grade) {
 		this.grade = grade;
 	}
 
@@ -95,13 +99,13 @@ public class Report implements Serializable {
 		this.comment = comment;
 	}
 
-	public Student getStudent() {
+/*	public Student getStudent() {
 		return student;
 	}
 
 	public void setStudent(Student student) {
 		this.student = student;
-	}
+	}*/
 
 	@Override
 	public String toString() {

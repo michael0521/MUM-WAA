@@ -56,12 +56,12 @@ public class TeacherController {
 	
 	@RequestMapping(value = "/lecture/{lectureId}/{studentId}/grade", method = RequestMethod.POST)
 	public String processGradeForm(@PathVariable("lectureId") int lectureId, @PathVariable("studentId") int studentId, 
-			@Valid @ModelAttribute("report") Report reportAfterGraded,  HttpServletRequest request, Model model){
+			@Valid @ModelAttribute("report") Report reportAfterGraded, BindingResult result,  HttpServletRequest request, Model model){
 		
-	/*	if(result.hasErrors()){
+		if(result.hasErrors()){
 			
 			return jspPath + "gradeReport";
-		}*/
+		}
 	/*	if(result.getSuppressedFields().length > 0){
 			throw new IllegalAccessError("Attempting to bind disallowed fields");
 		}*/
