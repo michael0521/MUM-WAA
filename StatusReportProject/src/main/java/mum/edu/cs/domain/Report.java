@@ -3,8 +3,15 @@ package mum.edu.cs.domain;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
+@Entity
 public class Report implements Serializable {
 
 	private static final long serialVersionUID = 1520961851058396784L;
@@ -12,7 +19,20 @@ public class Report implements Serializable {
 	public Report() {
 		
 	}
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	int id;
+	
+	public int getId() {
+		return id;
+	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	@OneToMany
 	List<TaskInfo> tasks;
 
 	public List<TaskInfo> getTasks() {
@@ -26,7 +46,7 @@ public class Report implements Serializable {
 	private float grade;
 	private String comment;
 
-	private Student student;
+//	private Student student;
 
 	@NotEmpty(message = "notes.empty")
 	private String notes;
@@ -88,13 +108,13 @@ public class Report implements Serializable {
 		this.comment = comment;
 	}
 
-	public Student getStudent() {
-		return student;
-	}
-
-	public void setStudent(Student student) {
-		this.student = student;
-	}
+//	public Student getStudent() {
+//		return student;
+//	}
+//
+//	public void setStudent(Student student) {
+//		this.student = student;
+//	}
 
 	@Override
 	public String toString() {

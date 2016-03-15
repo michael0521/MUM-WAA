@@ -11,18 +11,18 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
-      http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
-
+      ">
+<!-- http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd -->
 
 	<!-- <jpa:repositories base-package="mum.edu.cs.dao" /> -->
 
-	<context:component-scan base-package="mum.edu.cs" />
+	<context:component-scan base-package="mum.edu.cs.controller" />
 	<mvc:annotation-driven validator="validator" />
 
 	<bean id="localeResolver"
 		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
 		<property name="defaultLocale" value="en_US"></property>
-	</bean>
+	</bean>	
 
 	<mvc:interceptors>
 		<!--<bean class="mum.edu.cs.util.Intercept.AuthIntercept"></bean> -->
@@ -61,9 +61,4 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<bean id="inMemoryTeacherDAOImpl" class="mum.edu.cs.dao.InMemoryTeacherDAOImpl" />
-
-
-	<bean id="teacherService" class="mum.edu.cs.service.TeacherService"> 
-		<property name="teacherDAO" ref="inMemoryTeacherDAOImpl"/> </bean>
 </beans>

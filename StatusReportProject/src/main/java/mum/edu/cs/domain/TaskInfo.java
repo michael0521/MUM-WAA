@@ -1,5 +1,11 @@
 package mum.edu.cs.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class TaskInfo {
 	private static final long serialVersionUID = 152096185105839L;
 	
@@ -13,6 +19,18 @@ public class TaskInfo {
 		this.status = status;
 	}
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	private String task;
 
 	private String status;
