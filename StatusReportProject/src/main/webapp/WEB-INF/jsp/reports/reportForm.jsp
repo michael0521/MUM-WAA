@@ -46,8 +46,8 @@ th {
 
 	<div>
 	
-	<spring:url var = "saveReport" value="/saveReport" />
-	
+	<spring:url  var = "saveReport" value="/saveReport" />
+	<!-- -->
 	<form:form modelAttribute="newReport"  action= "${saveReport}"  method="post">
 		<table>
 			<tr>
@@ -55,11 +55,24 @@ th {
 				<th>Time</th>
 				<th>Status</th>
 			</tr>
+			
+			 <c:forEach items="${newReport.tasks}" varStatus="vs"> 
 			<tr>
-				<td><form:input path="task"/></td>
-				<td><form:input path="time" /></td>
-				<td><form:input path="status" /></td>
+			<%-- tasks[${status.index}].time --%>
+				<td><form:input path="tasks[${vs.index}].task" placeholder="Task detail"/></td>
+				<td><form:input path="tasks[${vs.index}].time" placeholder="How much time did you use" /></td>
+				<td><form:input path="tasks[${vs.index}].status" placeholder="Status so far" /></td>
 			</tr>
+		 </c:forEach>	
+        <%-- <tr>
+            <td align="center">${status.count}</td>
+            <td><input name="contacts[${status.index}].firstname" value="${contact.firstname}"/></td>
+            <td><input name="contacts[${status.index}].lastname" value="${contact.lastname}"/></td>
+            <td><input name="contacts[${status.index}].email" value="${contact.email}"/></td>
+            <td><input name="contacts[${status.index}].phone" value="${contact.phone}"/></td>
+        </tr>
+         --%>
+			
 		</table>
 
 		<br />
