@@ -1,7 +1,11 @@
 package mum.edu.cs.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
+
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Max;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -23,9 +27,10 @@ public class Report implements Serializable {
 		this.tasks = tasks;
 	}
 
-	@NotEmpty(message = "grade.empty")
-	private float grade;
-	@NotEmpty(message = "comment.empty")
+	/*@NotEmpty(message = "{grade.empty}")
+	@Max(value=100, message = "{grade.format}")*/
+	private int grade;
+	/*@NotEmpty(message = "{comment.empty}")*/
 	private String comment;
 
 	private Student student;
@@ -42,11 +47,11 @@ public class Report implements Serializable {
 	@NotEmpty(message = "date.empty")
 	private String date;
 
-	public float getGrade() {
+	public int getGrade() {
 		return grade;
 	}
 
-	public void setGrade(float grade) {
+	public void setGrade(int grade) {
 		this.grade = grade;
 	}
 

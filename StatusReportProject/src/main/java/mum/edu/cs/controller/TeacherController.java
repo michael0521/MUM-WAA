@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,8 +56,15 @@ public class TeacherController {
 	
 	@RequestMapping(value = "/lecture/{lectureId}/{studentId}/grade", method = RequestMethod.POST)
 	public String processGradeForm(@PathVariable("lectureId") int lectureId, @PathVariable("studentId") int studentId, 
-			@Valid @ModelAttribute("report") Report reportAfterGraded, HttpServletRequest request, Model model){
+			@Valid @ModelAttribute("report") Report reportAfterGraded,  HttpServletRequest request, Model model){
 		
+	/*	if(result.hasErrors()){
+			
+			return jspPath + "gradeReport";
+		}*/
+	/*	if(result.getSuppressedFields().length > 0){
+			throw new IllegalAccessError("Attempting to bind disallowed fields");
+		}*/
 		System.out.println(reportAfterGraded);
 		Report report = teacherService.saveReport(lectureId, studentId, reportAfterGraded);
 		model.addAttribute("gradedReport", report);
