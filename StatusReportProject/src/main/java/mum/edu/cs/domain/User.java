@@ -5,9 +5,9 @@ package mum.edu.cs.domain;
  */
 public class User {
 
-    private String name;
+    protected String name;
 
-    private String password;
+    protected String password;
 
     public String getName() {
         return name;

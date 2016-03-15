@@ -9,10 +9,11 @@ import mum.edu.cs.domain.Student;
 
 public interface TeacherDAO {
 	
-	abstract List<Lecture> getAllLectures();
+	List<Lecture> getAllLectures();
 	
-	abstract Map<Integer, Student> getStudentsByLecture(int lectureId);
+	Map<Integer, Student> getStudentsByLecture(int lectureId);
 
-	abstract Report getReportByStudentAndLecture(int lectureId, int studentId);
-
+	Report getReportByStudentAndLecture(int lectureId, int studentId);
+	
+	Report saveReportByStudentAndLecture(int lectureId, int studentId, Report report);
 }

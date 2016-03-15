@@ -2,7 +2,7 @@ package mum.edu.cs.domain;
 
 import java.util.List;
 
-public class Student {
+public class Student extends User{
 	
 	private int studentId;
 
@@ -10,7 +10,7 @@ public class Student {
 	private Report report;
 	
 	public Student() {	
-		
+		//super();
 	}
 
 	
@@ -18,6 +18,8 @@ public class Student {
 	public Student(int studentId, String name, String password, Report report) {
 		super();
 		this.studentId = studentId;
+		this.name = name;
+		this.password = password;
 		this.report = report;
 	}
 
@@ -47,6 +49,5 @@ public class Student {
 	public void setReport(Report report) {
 		this.report = report;
 	}
-	
 	
 }

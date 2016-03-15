@@ -44,8 +44,12 @@
 		<p>Date:&nbsp;&nbsp;&nbsp; <form:input width="100px" type="date" path="date"/></p>
 		
 		<br/>
+		<p>grade: <form:input width="50" type="text" path="grade" /></p>
+		<p>comment:</p> 
+				  <form:textarea rows="20" cols="100" type="text" path="comment"/>
 		
 		<input type="submit" style="margin-left:70%"/>
+		<br/>
 		
 		</form:form>
 </body>

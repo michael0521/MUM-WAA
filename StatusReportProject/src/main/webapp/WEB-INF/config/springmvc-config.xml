@@ -1,41 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:p="http://www.springframework.org/schema/p"
-    xmlns:mvc="http://www.springframework.org/schema/mvc"
-    xmlns:context="http://www.springframework.org/schema/context"
-    xsi:schemaLocation="
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd     
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
-        
-    <context:component-scan base-package="mum.edu.cs"/>
-    <mvc:annotation-driven validator="validator"/>
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+      http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
-        <property name="defaultLocale" value="en_US"></property>
-    </bean>
 
-    <mvc:interceptors>
-        <!--<bean class="mum.edu.cs.util.Intercept.AuthIntercept"></bean>-->
-        <bean  class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-            <property name="paramName" value="language"></property>
-        </bean>
-    </mvc:interceptors>
+	<!-- <jpa:repositories base-package="mum.edu.cs.dao" /> -->
 
-    <mvc:resources location="/resources/" mapping="/resources/**" /><!--
+	<context:component-scan base-package="mum.edu.cs" />
+	<mvc:annotation-driven validator="validator" />
+
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="en_US"></property>
+	</bean>
+
+	<mvc:interceptors>
+		<!--<bean class="mum.edu.cs.util.Intercept.AuthIntercept"></bean> -->
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="language"></property>
+		</bean>
+	</mvc:interceptors>
+
+	<mvc:resources location="/resources/" mapping="/resources/**" /><!-- 
 		whenever a request start with /resources/ then look in to resources folder -->
 
 
-    <bean id="messageSource"
-          class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basenames" value="classpath:messages" />
-        <property name="defaultEncoding" value="UTF-8"/>
-    </bean> 
-	
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames" value="classpath:messages" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+
 	<bean id="errMessageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="classpath:errorMessages" />
@@ -46,19 +51,19 @@
 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
 		<property name="validationMessageSource" ref="errMessageSource" />
 	</bean>
-	
-   	<!--  <mvc:resources mapping="/css/**" location="/css/"/>  --> 
-	<!-- OR  <mvc:default-servlet-handler />  -->      
- 
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/jsp/"/>
-        <property name="suffix" value=".jsp"/>
-    </bean>
-    
-    <bean id="inMemoryTeacherDAOImpl" class="mum.edu.cs.dao.InMemoryTeacherDAOImpl"/>
 
-    
-	<bean id="teacherService" class="mum.edu.cs.service.TeacherService">
-		<property name="teacherDAO" ref="inMemoryTeacherDAOImpl"/>
+	<!-- <mvc:resources mapping="/css/**" location="/css/"/> -->
+	<!-- OR <mvc:default-servlet-handler /> -->
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
 	</bean>
+
+	<bean id="inMemoryTeacherDAOImpl" class="mum.edu.cs.dao.InMemoryTeacherDAOImpl" />
+
+
+	<bean id="teacherService" class="mum.edu.cs.service.TeacherService"> 
+		<property name="teacherDAO" ref="inMemoryTeacherDAOImpl"/> </bean>
 </beans>

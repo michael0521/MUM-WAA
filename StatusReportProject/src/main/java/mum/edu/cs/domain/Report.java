@@ -11,7 +11,7 @@ public class Report implements Serializable {
 	private float grade;
 	private String comment;
 	private String time;
-	
+	private Student student;
 	
 	private String task;
 	
@@ -85,10 +85,16 @@ public class Report implements Serializable {
 	}
 	
 	
+	public Student getStudent() {
+		return student;
+	}
+	public void setStudent(Student student) {
+		this.student = student;
+	}
 	@Override
 	public String toString() {
-	
-		return "task " + task + " time " + time + " status " + status  + " date " + date;
+		return "Report [grade=" + grade + ", comment=" + comment + ", time=" + time + ", task=" + task + ", status="
+				+ status + ", notes=" + notes + ", sci=" + sci + ", sign=" + sign + ", date=" + date + "]";
 	}
 	
 }

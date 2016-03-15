@@ -2,6 +2,8 @@ package mum.edu.cs.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import mum.edu.cs.domain.Report;
 import mum.edu.cs.domain.Student;
@@ -17,6 +20,7 @@ import mum.edu.cs.service.TeacherService;
 
 @Controller
 @RequestMapping("/teacher")
+@SessionAttributes("gradedReport")
 public class TeacherController {
 	
 	private static final String jspPath = "teacher/"; 
@@ -49,10 +53,21 @@ public class TeacherController {
 	}
 	
 	@RequestMapping(value = "/lecture/{lectureId}/{studentId}/grade", method = RequestMethod.POST)
-	public String processGradeForm(@PathVariable("lectureId") int lectureId, @PathVariable("studentId") int studentId){
+	public String processGradeForm(@PathVariable("lectureId") int lectureId, @PathVariable("studentId") int studentId, 
+			@ModelAttribute("report") Report reportAfterGraded, HttpServletRequest request, Model model){
 		
-		
-		
-		return jspPath + "gradeReport";
+		System.out.println(reportAfterGraded);
+		Report report = teacherService.saveReport(lectureId, studentId, reportAfterGraded);
+		model.addAttribute("gradedReport", report);
+		//return jspPath + "afterGrade";
+		return "redirect:" + "/teacher/lecture/" + lectureId + "/" + studentId + "/result";
 	}
+	
+	@RequestMapping(value = "/lecture/{lectureId}/{studentId}/result", method = RequestMethod.GET)
+	public String getGrade(@ModelAttribute("gradedReport") Report report, 
+			@PathVariable("lectureId") int lectureId, @PathVariable("studentId") int studentId, Model model){
+		model.addAttribute("lectureId", lectureId);
+		return jspPath + "afterGrade";
+	}
+	
 }

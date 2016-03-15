@@ -37,6 +37,11 @@ public class TeacherService {
 		Report report = teacherDAO.getReportByStudentAndLecture(lectureId, studentId);
 		return report;
 	}
+	
+	public Report saveReport(int lectureId, int studentId, Report report){
+		Report gradedReport = teacherDAO.saveReportByStudentAndLecture(lectureId, studentId, report);
+		return gradedReport;
+	}
 
 
 	public TeacherDAO getTeacherDAO() {

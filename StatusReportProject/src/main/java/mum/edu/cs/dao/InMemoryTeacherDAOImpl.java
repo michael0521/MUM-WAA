@@ -14,6 +14,8 @@ import mum.edu.cs.domain.Student;
 
 @Repository
 public class InMemoryTeacherDAOImpl implements TeacherDAO{
+	
+	Map<Integer, Student> students = new HashMap<>();
 
 	@Override
 	public List<Lecture> getAllLectures() {
@@ -48,8 +50,14 @@ public class InMemoryTeacherDAOImpl implements TeacherDAO{
 		return report;
 	}
 	
+	private Student getStudentByLectureAndStudentId(int lectureId,int studentId){
+		List<Lecture> lectures = getAllLectures();
+		Lecture lecture = lectures.get(lectureId-1);
+		return lecture.getStudents().get(studentId);
+	}
+	
 	private Map<Integer, Student> getAllStudents(){
-		Map<Integer, Student> students = new HashMap<>();
+		/*Map<Integer, Student> students = new HashMap<>();*/
 		
 		Report report1 = new Report();
 		report1.setTask("Task AAA");
@@ -84,5 +92,14 @@ public class InMemoryTeacherDAOImpl implements TeacherDAO{
 		
 		return students;
 	}
+
+	@Override
+	public Report saveReportByStudentAndLecture(int lectureId, int studentId, Report gradedReport) {
+		Student student = getStudentByLectureAndStudentId(lectureId, studentId);
+		student.setReport(gradedReport);
+		return student.getReport();
+	}
+	
+	
 
 }

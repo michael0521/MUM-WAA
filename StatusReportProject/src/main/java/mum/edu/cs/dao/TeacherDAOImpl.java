@@ -30,5 +30,12 @@ public class TeacherDAOImpl implements TeacherDAO{
 		return null;
 	}
 
+	@Override
+	public Report saveReportByStudentAndLecture(int lectureId, int studentId, Report report) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 	
 }
