@@ -1,10 +1,8 @@
 package mum.edu.cs.controller;
 
-import mum.edu.cs.domain.JsonResponse;
-import mum.edu.cs.domain.Professor;
-import mum.edu.cs.domain.Student;
 import mum.edu.cs.domain.User;
 import mum.edu.cs.service.AdminService;
+import mum.edu.cs.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -13,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by su on 3/6/16.
@@ -27,15 +25,19 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminController {
 
+    private String JspPath = "/admin/";
+
     @Autowired
     private AdminService adminService;
 
+    @Autowired
+    private RoleService roleService;
 
     @RequestMapping(value = {"/",""})
     public String index(Model model){
-        List<Student> students = adminService.getAllStudent();
-        model.addAttribute("students",students);
-        return "/admin/index";
+        List<User> users = adminService.getAll();
+        model.addAttribute("users",users);
+        return JspPath +  "index";
     }
 
     @RequestMapping(value = "/delete",method = RequestMethod.POST)
@@ -44,37 +46,27 @@ public class AdminController {
         adminService.deleteUser(uid);
     }
 
-    @RequestMapping(value = "/add-student", method = RequestMethod.GET)
-    public String addStudentForm(@ModelAttribute Student student ){
-        return "/admin/StudentForm";
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String addStudentForm(@ModelAttribute User user, Model model ){
+        Map<String,String> roleMap = roleService.getAllRoleMap();
+        model.addAttribute("roleMap",roleMap);
+        return JspPath + "userAddForm";
     }
 
 
-    @RequestMapping(value = "/add-professor", method = RequestMethod.GET)
-    public String addProfessorForm(@ModelAttribute Professor professor){
-        return "";
-    }
-
-    @RequestMapping(value = "/edit-student", method = RequestMethod.GET)
-    public String editStudentFrom(@ModelAttribute Student student){
-        return "/admin/student";
-    }
-
-    @RequestMapping(value = "edit-professor", method = RequestMethod.GET)
-    public String editProfessorForm(@ModelAttribute Professor professor){
-        return "";
+    @RequestMapping(value = "/edit/{uid}", method = RequestMethod.GET)
+    public String editUserFrom(@PathVariable("uid") long uid, Model model){
+        User user  = adminService.getUserById(uid);
+        model.addAttribute("user",user);
+        return JspPath + "userAddForm";
     }
 
 
-    @RequestMapping(value = "/save-professor", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void   saveProfessor(){
-        return;
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String saveStudent(@Valid User user){
+
+        adminService.saveUser(user);
+        return "redirect:/admin";
     }
 
-    @RequestMapping(value = "/save-student", method = RequestMethod.POST)
-    public @ResponseBody JsonResponse saveStudent(Student student){
-
-        return new JsonResponse();
-    }
 }

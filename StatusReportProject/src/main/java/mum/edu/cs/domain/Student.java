@@ -6,8 +6,6 @@ public class Student extends User {
 	
 	private int studentId;
 
-	private String name;
-
 	//private List<Report> reports;
 	private Report report;
 
@@ -24,6 +22,7 @@ public class Student extends User {
 		this.name = name;
 		this.password = password;
 		this.report = report;
+		this.role = "ROLE_STUDENT";
 	}
 
 
@@ -53,11 +52,4 @@ public class Student extends User {
 		this.report = report;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 }

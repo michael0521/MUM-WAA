@@ -22,7 +22,7 @@ $(document).ready(function () {
 
 
     $("#add_student").on("click", function () {
-        window.location.href = "/admin/add-student";
+        window.location.href = "/admin/add";
     });
 });
 

@@ -21,13 +21,13 @@
 
 <table style="width:100%" id="table">
     <tr>
-        <td>StudentId</td>
+        <td>Name</td>
         <td>Action</td>
     </tr>
 
-    <c:forEach var="item" items="${students}">
+    <c:forEach var="item" items="${users}">
         <tr>
-            <td>${item.studentId}</td>
+            <td>${item.name}</td>
             <td>
                 <input id="delete" uid="${item.getId()}" type="button" value="delete"/>
             </td>
