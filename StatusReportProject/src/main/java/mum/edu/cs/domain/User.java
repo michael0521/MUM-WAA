@@ -7,17 +7,9 @@ public class User {
 
     private long id;
 
-    private String name;
+    private String account;
 
-    protected String password;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    private String password;
 
     public String getPassword() {
         return password;
@@ -33,5 +25,13 @@ public class User {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
     }
 }

@@ -6,10 +6,12 @@ public class Student extends User {
 	
 	private int studentId;
 
+	private String name;
+
 	//private List<Report> reports;
 	private Report report;
-	
-	public Student() {	
+
+	public Student() {
 		//super();
 	}
 
@@ -18,7 +20,7 @@ public class Student extends User {
 	public Student(int studentId, String name, String password, Report report) {
 		super();
 		this.studentId = studentId;
-		this.name = name;
+		this.setName(name);
 		this.password = password;
 		this.report = report;
 	}
@@ -49,5 +51,14 @@ public class Student extends User {
 	public void setReport(Report report) {
 		this.report = report;
 	}
-	
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
 }

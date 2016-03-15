@@ -17,6 +17,7 @@
 
 
 <span>student</span><br>
+<input type="button" id="add_student" value="add" />
 
 <table style="width:100%" id="table">
     <tr>
@@ -24,11 +25,12 @@
         <td>Action</td>
     </tr>
 
-
     <c:forEach var="item" items="${students}">
         <tr>
             <td>${item.studentId}</td>
-            <td><input id="delete" uid="${item.getId()}" type="button" value="delete"/></td>
+            <td>
+                <input id="delete" uid="${item.getId()}" type="button" value="delete"/>
+            </td>
         </tr>
     </c:forEach>
 
