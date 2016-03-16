@@ -44,4 +44,8 @@ public class AdminServiceImpl {
         return adminRepository.findOne(uid) ;
     }
 
+    public User getUserByUsername(String username){
+        return adminRepository.getUserByUsername(username);
+    }
+
 }

@@ -5,13 +5,16 @@ import mum.edu.cs.service.RoleService;
 import mum.edu.cs.serviceimpl.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.naming.Binding;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 
@@ -36,7 +39,6 @@ public class AdminController {
     private RoleService roleService;
 
     @RequestMapping(value = {"/",""})
-    @PreAuthorize("hasRole('ADMIN')")
     public String index(Model model){
         List<User> users = adminService.getAll();
         model.addAttribute("users",users);
@@ -68,8 +70,10 @@ public class AdminController {
 
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveStudent(@Valid User user){
-
+    public String saveStudent(@Valid User user, BindingResult result){
+        if(result.hasErrors()){
+            return JspPath + "userAddForm";
+        }
         adminService.saveUser(user);
         return "redirect:/admin";
     }
