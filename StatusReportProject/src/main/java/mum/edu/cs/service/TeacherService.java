@@ -12,10 +12,10 @@ import mum.edu.cs.domain.Lecture;
 import mum.edu.cs.domain.Report;
 import mum.edu.cs.domain.Student;
 
-//@Service
+@Service
 public class TeacherService {
 	
-	//@Autowired
+	@Autowired
 	private TeacherDAO teacherDAO;
 	
 	public List<String> getAllLectureTitles(){

@@ -27,7 +27,7 @@ public class TeacherController {
 	
 	private static final String jspPath = "teacher/"; 
 	
-//	@Autowired
+	@Autowired
 	private TeacherService teacherService;
 	
 	@RequestMapping("/lectures")

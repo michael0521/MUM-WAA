@@ -13,7 +13,7 @@ import mum.edu.cs.domain.Report;
 import mum.edu.cs.domain.Student;
 import mum.edu.cs.domain.TaskInfo;
 
-//@Repository
+@Repository
 public class InMemoryTeacherDAOImpl implements TeacherDAO{
 	
 	Map<Integer, Student> students = new HashMap<>();

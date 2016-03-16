@@ -17,7 +17,8 @@
 
     <!-- <jpa:repositories base-package="mum.edu.cs.dao" /> -->
 
-    <context:component-scan base-package="mum.edu.cs.controller"/>
+<!--     <context:component-scan base-package="mum.edu.cs.controller"/> -->
+    <context:component-scan base-package="mum.edu.cs"/>
     <mvc:annotation-driven validator="validator"/>
 
     <bean id="localeResolver"
