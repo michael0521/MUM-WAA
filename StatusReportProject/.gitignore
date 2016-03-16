@@ -3,4 +3,6 @@
 .project
 .settings/
 StatusResportProject.iml
+StatusReport.log
+StatusReport-Audit.log
 
