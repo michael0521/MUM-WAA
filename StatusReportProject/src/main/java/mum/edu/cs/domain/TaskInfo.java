@@ -25,6 +25,16 @@ public class TaskInfo {
 	@Column(name = "TK_ID")
 	private int id;
 	
+	private int reportId;
+	
+	public int getReportId() {
+		return reportId;
+	}
+
+	public void setReportId(int reportId) {
+		this.reportId = reportId;
+	}
+
 	public int getId() {
 		return id;
 	}

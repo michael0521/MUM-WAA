@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import mum.edu.cs.domain.Report;
+import mum.edu.cs.domain.TaskInfo;
 import mum.edu.cs.repository.ReportRepository;
+import mum.edu.cs.repository.TaskRepository;
 import mum.edu.cs.service.ReportService;
 
 
@@ -17,13 +19,34 @@ public class ReportServiceImpl implements ReportService{
 	@Autowired
 	ReportRepository repo;
 	
+	@Autowired
+	TaskRepository tkRepo;
+	
 	public List<Report> getAllReports(){
 		return (List<Report>)repo.findAll();
 	}
 	
 	public Report getReportByLectureAndStu(int lectureId, int stuId){
 		
-		return repo.getReportByLectureAndStu(lectureId, stuId);
+		Report r =  repo.getReportByLectureAndStu(lectureId, stuId);
+		if(r != null){
+			 r.setTasks(tkRepo.getReportByLectureAndStu(r.getId()));;
+		}
+		
+		return r;
 	}
 
+	public Report saveReport(Report r){
+		Report saved =  repo.save(r);
+		
+		if(r.getTasks() != null){
+			for(TaskInfo k : r.getTasks()){
+				k.setReportId(saved.getId());
+			}
+			
+			tkRepo.save(r.getTasks());
+		}
+		
+		return saved;
+	}
 }
