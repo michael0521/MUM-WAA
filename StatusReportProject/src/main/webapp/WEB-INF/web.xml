@@ -12,7 +12,7 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>
                 /WEB-INF/config/springmvc-config.xml
-                <!--/WEB-INF/config/security-context.xml-->
+
             </param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
@@ -27,6 +27,7 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>
             /WEB-INF/config/applicationContext.xml
+            /WEB-INF/config/security-context.xml
         </param-value>
     </context-param>
     <listener>

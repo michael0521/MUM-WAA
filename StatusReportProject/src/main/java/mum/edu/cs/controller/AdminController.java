@@ -23,7 +23,7 @@ import java.util.Map;
  */
 
 @Controller
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+
 @RequestMapping("/admin")
 public class AdminController {
 
@@ -35,11 +35,11 @@ public class AdminController {
     private RoleService roleService;
 
     @RequestMapping(value = {"/",""})
+    @PreAuthorize("hasRole('ADMIN')")
     public String index(Model model){
 //        List<User> users = adminService.getAll();
 //        model.addAttribute("users",users);
-//        return JspPath +  "index";
-        return "test";
+        return JspPath +  "index";
     }
 
     @RequestMapping(value = "/delete",method = RequestMethod.POST)
