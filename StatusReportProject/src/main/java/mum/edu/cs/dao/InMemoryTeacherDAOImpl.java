@@ -11,8 +11,9 @@ import org.springframework.stereotype.Repository;
 import mum.edu.cs.domain.Lecture;
 import mum.edu.cs.domain.Report;
 import mum.edu.cs.domain.Student;
+import mum.edu.cs.domain.TaskInfo;
 
-@Repository
+//@Repository
 public class InMemoryTeacherDAOImpl implements TeacherDAO{
 	
 	Map<Integer, Student> students = new HashMap<>();
@@ -60,31 +61,43 @@ public class InMemoryTeacherDAOImpl implements TeacherDAO{
 		/*Map<Integer, Student> students = new HashMap<>();*/
 		
 		Report report1 = new Report();
-		report1.setTask("Task AAA");
-		report1.setTime("30 min");
-		report1.setStatus("Done");
+		List<TaskInfo> tasks1 = new ArrayList<>();
+		TaskInfo task1 = new TaskInfo();
+		task1.setTask("Task AAA");
+		task1.setTime("30 min");
+		task1.setStatus("Done");
 		report1.setNotes("This is a note A");
 		report1.setSci("This is a SCI point A");
 		report1.setSign("Xiaoming Yang");
 		report1.setDate(LocalDate.now().toString());
+		tasks1.add(task1);
+		report1.setTasks(tasks1);
 		
 		Report report2 = new Report();
-		report2.setTask("Task BBB");
-		report2.setTime("30 min");
-		report2.setStatus("Done");
+		List<TaskInfo> tasks2 = new ArrayList<>();
+		TaskInfo task2 = new TaskInfo();
+		task2.setTask("Task BBB");
+		task2.setTime("30 min");
+		task2.setStatus("Done");
 		report2.setNotes("This is a note B");
 		report2.setSci("This is a SCI point B");
 		report2.setSign("Shaoyang Su");
 		report2.setDate(LocalDate.now().toString());
+		tasks2.add(task2);
+		report2.setTasks(tasks2);
 		
 		Report report3 = new Report();
-		report3.setTask("Task CCC");
-		report3.setTime("30 min");
-		report3.setStatus("Done");
+		List<TaskInfo> tasks3 = new ArrayList<>();
+		TaskInfo task3 = new TaskInfo();
+		task3.setTask("Task CCC");
+		task3.setTime("30 min");
+		task3.setStatus("Done");
 		report3.setNotes("This is a note C");
 		report3.setSci("This is a SCI point C");
 		report3.setSign("Qi Cui");
 		report3.setDate(LocalDate.now().toString());
+		tasks3.add(task3);
+		report3.setTasks(tasks3);
 		
 		students.put(984001, new Student(984001, "Michael", "12345", report1));
 		students.put(984002, new Student(984002, "Eric", "12345", report2));

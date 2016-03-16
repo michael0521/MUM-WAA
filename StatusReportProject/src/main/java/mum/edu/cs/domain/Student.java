@@ -7,15 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+//@Entity
 public class Student extends User {
 	
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+//	@Id
+//	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int studentId;
-
-	private String name;
 
 	//private List<Report> reports;
 	private Report report;
@@ -33,6 +31,7 @@ public class Student extends User {
 		this.name = name;
 		this.password = password;
 		this.report = report;
+		this.role = "ROLE_STUDENT";
 	}
 
 
@@ -62,11 +61,4 @@ public class Student extends User {
 		this.report = report;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 }

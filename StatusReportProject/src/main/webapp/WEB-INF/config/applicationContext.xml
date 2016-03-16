@@ -13,17 +13,18 @@
  
  <!-- The jpa:repositories scans for all interfaces that extend  Repository and 
       creates implementations for use at runtime.  -->
- <jpa:repositories base-package="mum.edu.cs.repository" />
- 
- 
- 
+
+
+    <jpa:repositories base-package="mum.edu.cs.repository" />
  <bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/jpaexamples" />
+		<property name="url" value="jdbc:mysql://localhost:8889/jpaexamples" />
 		<property name="username" value="root" />
 		<property name="password" value="root" />
 	</bean>
+
+
  
  
  <!-- Creates a JPA EntityManagerFactory according to JPA's standard container bootstrap contract.

@@ -9,8 +9,9 @@ import mum.edu.cs.domain.Lecture;
 import mum.edu.cs.domain.Report;
 import mum.edu.cs.domain.Student;
 
-@Repository
+//@Repository
 public class TeacherDAOImpl implements TeacherDAO{
+
 
 	@Override
 	public List<Lecture> getAllLectures() {

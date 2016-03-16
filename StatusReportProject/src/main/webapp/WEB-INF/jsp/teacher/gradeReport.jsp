@@ -17,11 +17,14 @@
 				<th>Time</th>
 				<th>Status</th>
 			</tr>
+			 <c:forEach items="${report.tasks}" varStatus="vs"> 
 			<tr>
-				<td><form:input path="task"/></td>
-				<td><form:input path="time" /></td>
-				<td><form:input path="status" /></td>
+			<%-- tasks[${status.index}].time --%>
+				<td><form:input path="tasks[${vs.index}].task" placeholder="Task detail"/></td>
+				<td><form:input path="tasks[${vs.index}].time" placeholder="How much time did you use" /></td>
+				<td><form:input path="tasks[${vs.index}].status" placeholder="Status so far" /></td>
 			</tr>
+		 </c:forEach>	
 		</table>
 
 		<br />
@@ -44,8 +47,15 @@
 		<p>Date:&nbsp;&nbsp;&nbsp; <form:input width="100px" type="date" path="date"/></p>
 		
 		<br/>
-		<p>grade: <form:input width="50" type="text" path="grade" /></p>
+		<p>grade: 
+		<form:errors path="grade" cssStyle="color : red;" />
+		<div style="text-align: center;">
+			<form:input width="50" type="text" path="grade" /></p>
+		</div>
 		<p>comment:</p> 
+		<div style="text-align: center;">
+			<form:errors path="comment" cssStyle="color : red;" />
+		</div>
 				  <form:textarea rows="20" cols="100" type="text" path="comment"/>
 		
 		<input type="submit" style="margin-left:70%"/>

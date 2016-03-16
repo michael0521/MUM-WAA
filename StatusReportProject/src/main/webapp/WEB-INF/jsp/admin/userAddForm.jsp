@@ -14,20 +14,33 @@
 </head>
 <body>
 
-<form:form action="/save" method="post" modelAttribute="student">
+<form:form action="/admin/save" method="post" modelAttribute="user">
   <form:hidden path="id" ></form:hidden>
   <label for="useId">UseId:</label>
   <form:input path="id" disabled="true"></form:input>
 
   <br>
   <br>
-  <label for="studentId" > StudentId: </label>
-  <form:input path="studentId"></form:input>
+  <label for="account">Account</label>
+  <form:input path="account"></form:input>
   <br>
   <br>
+  <label for="password">Password</label>
+  <form:input path="password" type="password"></form:input>
 
+  <br>
+  <br>
   <label for="name">Name:</label>
   <form:input path="name"></form:input>
+
+  <br>
+  <br>
+  <label for="role">Role</label>
+  <form:select path="role">
+    <form:options items="${roleMap}"></form:options>
+  </form:select>
+
+
 
   <br>
   <br>

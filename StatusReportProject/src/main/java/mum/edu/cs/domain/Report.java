@@ -1,6 +1,7 @@
 package mum.edu.cs.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -8,10 +9,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
-@Entity
+//@Entity
 public class Report implements Serializable {
 
 	private static final long serialVersionUID = 1520961851058396784L;
@@ -20,8 +26,8 @@ public class Report implements Serializable {
 		
 	}
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+//	@Id
+//	@GeneratedValue(strategy=GenerationType.AUTO)
 	int id;
 	
 	public int getId() {
@@ -32,7 +38,7 @@ public class Report implements Serializable {
 		this.id = id;
 	}
 	
-	@OneToMany
+//	@OneToMany
 	List<TaskInfo> tasks;
 
 	public List<TaskInfo> getTasks() {
@@ -43,10 +49,14 @@ public class Report implements Serializable {
 		this.tasks = tasks;
 	}
 
-	private float grade;
+	@NotNull(message = "{grade.empty}")
+	@DecimalMax(value = "100.00", message = "{grade.max}")
+	@DecimalMin(value = "60.00", message = "{grade.min}")
+	private BigDecimal grade;
+	@NotEmpty(message = "{comment.empty}")
 	private String comment;
 
-//	private Student student;
+	/*private Student student;*/
 
 	@NotEmpty(message = "notes.empty")
 	private String notes;
@@ -60,11 +70,11 @@ public class Report implements Serializable {
 	@NotEmpty(message = "date.empty")
 	private String date;
 
-	public float getGrade() {
+	public BigDecimal getGrade() {
 		return grade;
 	}
 
-	public void setGrade(float grade) {
+	public void setGrade(BigDecimal grade) {
 		this.grade = grade;
 	}
 
@@ -108,13 +118,13 @@ public class Report implements Serializable {
 		this.comment = comment;
 	}
 
-//	public Student getStudent() {
-//		return student;
-//	}
-//
-//	public void setStudent(Student student) {
-//		this.student = student;
-//	}
+/*	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}*/
 
 	@Override
 	public String toString() {

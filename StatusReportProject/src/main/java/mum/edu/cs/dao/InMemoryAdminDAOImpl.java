@@ -1,6 +1,8 @@
 package mum.edu.cs.dao;
 
+import mum.edu.cs.domain.Professor;
 import mum.edu.cs.domain.Student;
+import mum.edu.cs.domain.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -10,40 +12,60 @@ import java.util.List;
  * Created by su on 3/14/16.
  */
 
-@Repository
+//@Repository
 public class InMemoryAdminDAOImpl implements AdminDAO {
 
-    private List<Student> studentList;
+
+    private List<User> userList = new ArrayList<>() ;
 
     public InMemoryAdminDAOImpl(){
-        studentList = new ArrayList<>();
-        Student tmp = new Student();
-        tmp.setId(1);
-        tmp.setStudentId(123);
-        studentList.add(tmp);
-
-        tmp = new Student();
-        tmp.setId(2);
-        tmp.setStudentId(123);
-        studentList.add(tmp);
-    }
-
-    @Override
-    public List<Student> getAllStudent() {
-
-        return studentList;
+        User user = new User();
+        user.setId(1);
+        user.setName("suzhaoyang");
+        user.setAccount("su");
+        user.setPassword("123456");
+        user.setRole("ROLE_ADMIN");
+        userList.add(user);
     }
 
     @Override
     public boolean deleteUser(long uid) {
 
-        for(Student item : studentList){
+        for(User item : userList){
             if(item.getId() == uid){
-                studentList.remove(item);
+                userList.remove(item);
                 return true;
             }
         }
 
         return  false;
+    }
+
+    @Override
+    public boolean save(User user) {
+        for (User item : userList){
+            if(item.getId() == user.getId()){
+                userList.remove(item);
+                userList.add(user);
+                return true;
+            }
+        }
+        userList.add(user);
+        return true;
+    }
+
+    @Override
+    public User getUserById(Long uid) {
+        for (User item : userList){
+            if(item.getId() == uid){
+                return item;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<User> getAll() {
+        return userList;
     }
 }
