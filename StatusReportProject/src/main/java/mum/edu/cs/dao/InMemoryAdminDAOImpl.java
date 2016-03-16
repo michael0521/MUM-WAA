@@ -1,6 +1,7 @@
 package mum.edu.cs.dao;
 
 import mum.edu.cs.domain.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
  * Created by su on 3/14/16.
  */
 
-//@Repository
+@Repository
 public class InMemoryAdminDAOImpl implements AdminDAO {
 
 

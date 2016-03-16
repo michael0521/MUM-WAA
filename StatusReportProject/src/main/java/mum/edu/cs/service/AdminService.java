@@ -16,9 +16,9 @@ import java.util.List;
  * Created by su on 3/14/16.
  */
 
-//@Service
+@Service
 public class AdminService {
-//    @Autowired
+    @Autowired
     private AdminDAO adminDAO;
 
     public List<User> getAll(){

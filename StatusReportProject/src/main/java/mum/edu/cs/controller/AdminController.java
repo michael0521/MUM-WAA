@@ -28,17 +28,17 @@ import java.util.Map;
 public class AdminController {
 
     private String JspPath = "/admin/";
-//    @Autowired
+    @Autowired
     private AdminService adminService;
 
-//    @Autowired
+    @Autowired
     private RoleService roleService;
 
     @RequestMapping(value = {"/",""})
     @PreAuthorize("hasRole('ADMIN')")
     public String index(Model model){
-//        List<User> users = adminService.getAll();
-//        model.addAttribute("users",users);
+        List<User> users = adminService.getAll();
+        model.addAttribute("users",users);
         return JspPath +  "index";
     }
 

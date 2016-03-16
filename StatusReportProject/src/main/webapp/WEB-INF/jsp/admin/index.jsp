@@ -20,6 +20,7 @@
 <input type="button" id="add_student" value="add" />
 
 <table style="width:100%" id="table">
+
     <tr>
         <td>Name</td>
         <td>Role</td>
@@ -39,6 +40,7 @@
 
 </table>
 
+<input id="csrf" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 </body>
 </html>

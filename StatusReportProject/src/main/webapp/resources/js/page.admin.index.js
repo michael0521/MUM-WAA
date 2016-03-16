@@ -6,6 +6,9 @@ $(document).ready(function () {
     $("#table").on("click", "#delete", function (e) {
         var data = {};
         data.uid = parseInt(e.target.getAttribute("uid"));
+        var name = $("#csrf").attr("name");
+        var value = $("#csrf").val();
+        data[name] = value;
         $.ajax({
             url: "/admin/delete",
             dataType: "json",
