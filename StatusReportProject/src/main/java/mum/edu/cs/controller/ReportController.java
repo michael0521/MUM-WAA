@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import mum.edu.cs.domain.Report;
 import mum.edu.cs.domain.TaskInfo;
+import mum.edu.cs.service.ReportService;
 
 
 @Controller
@@ -24,17 +25,17 @@ public class ReportController extends BaseController{
 	
 	private static List<TaskInfo> initInfos = new ArrayList<>();
 	
-//	@Autowired
-//	ReportService ps;
+	@Autowired
+	ReportService ps;
 	
 	static {
-		initInfos.add(new TaskInfo());
-		initInfos.add(new TaskInfo());
-		initInfos.add(new TaskInfo());
+//		initInfos.add(new TaskInfo());
+//		initInfos.add(new TaskInfo());
+//		initInfos.add(new TaskInfo());
 		
-//		initInfos.add(new TaskInfo("Review Slides", "50 mins","cccc"));
-//		initInfos.add(new TaskInfo("Do the first lab", "60 mins","cccc"));
-//		initInfos.add(new TaskInfo("Do the second lab", "100 mins","cccc"));
+		initInfos.add(new TaskInfo("Review Slides", "50 mins","cccc"));
+		initInfos.add(new TaskInfo("Do the first lab", "60 mins","cccc"));
+		initInfos.add(new TaskInfo("Do the second lab", "100 mins","cccc"));
 	}
 	
 //	public @ModelAttribute("collegeListCmd")

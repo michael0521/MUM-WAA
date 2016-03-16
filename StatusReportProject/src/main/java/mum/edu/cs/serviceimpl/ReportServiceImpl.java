@@ -21,6 +21,9 @@ public class ReportServiceImpl implements ReportService{
 		return (List<Report>)repo.findAll();
 	}
 	
-	
+	public Report getReportByLectureAndStu(int lectureId, int stuId){
+		
+		return repo.getReportByLectureAndStu(lectureId, stuId);
+	}
 
 }

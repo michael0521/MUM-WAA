@@ -35,6 +35,12 @@ public class Report implements Serializable {
 	@OneToMany
 	@JoinColumn(name="TK_ID", referencedColumnName="RP_ID")
 	List<TaskInfo> tasks;
+	
+	
+	int lectureId;
+	
+	int studentId;
+	
 //	@JoinTable
 //	  (
 //	      name="REPORT_TASK",
@@ -42,6 +48,22 @@ public class Report implements Serializable {
 //	      inverseJoinColumns={ @JoinColumn(name="TK_ID", referencedColumnName="TK_ID", unique=true) }
 //	  )
 	
+
+	public int getLectureId() {
+		return lectureId;
+	}
+
+	public void setLectureId(int lectureId) {
+		this.lectureId = lectureId;
+	}
+
+	public int getStudentId() {
+		return studentId;
+	}
+
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
+	}
 
 	@NotNull(message = "{grade.empty}")
 	@DecimalMax(value = "100.00", message = "{grade.max}")
