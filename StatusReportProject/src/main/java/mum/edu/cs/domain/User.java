@@ -1,12 +1,18 @@
 package mum.edu.cs.domain;
 
-import javax.management.relation.Role;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Created by su on 3/14/16.
  */
+@Entity
 public class User {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
 
     protected String account;
@@ -15,7 +21,7 @@ public class User {
 
     protected String name;
 
-    protected String role;
+    protected String authorities;
 
     public String getPassword() {
         return password;
@@ -49,11 +55,11 @@ public class User {
         this.name = name;
     }
 
-    public String getRole() {
-        return role;
+    public String getAuthorities() {
+        return authorities;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setAuthorities(String authorities) {
+        this.authorities = authorities;
     }
 }

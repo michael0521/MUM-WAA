@@ -35,8 +35,8 @@
 
   <br>
   <br>
-  <label for="role">Role</label>
-  <form:select path="role">
+  <label for="authorities">Role</label>
+  <form:select path="authorities">
     <form:options items="${roleMap}"></form:options>
   </form:select>
 

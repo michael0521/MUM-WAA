@@ -17,5 +17,10 @@ public class Login {
         return "login";
     }
 
+    @RequestMapping(value = "/welcome")
+    public String welcome(){
+        return "welcome";
+    }
+
 
 }

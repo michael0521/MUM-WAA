@@ -1,9 +1,6 @@
 package mum.edu.cs.dao;
 
-import mum.edu.cs.domain.Professor;
-import mum.edu.cs.domain.Student;
 import mum.edu.cs.domain.User;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +21,7 @@ public class InMemoryAdminDAOImpl implements AdminDAO {
         user.setName("suzhaoyang");
         user.setAccount("su");
         user.setPassword("123456");
-        user.setRole("ROLE_ADMIN");
+        user.setAuthorities("ROLE_ADMIN");
         userList.add(user);
     }
 

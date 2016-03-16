@@ -29,7 +29,7 @@
     <c:forEach var="item" items="${users}">
         <tr>
             <td>${item.name}</td>
-            <td>${item.role}</td>
+            <td>${item.authorities}</td>
             <td>
                 <input id="delete" uid="${item.getId()}" type="button" value="delete"/>
                 <input id="edit" uid="${item.getId()}" type="button" value="edit" />
