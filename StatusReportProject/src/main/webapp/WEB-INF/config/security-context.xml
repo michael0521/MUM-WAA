@@ -53,7 +53,7 @@
  			    default-target-url="/welcome"
                always-use-default-target="true"
                authentication-failure-url="/loginfailed"/>
-         <security:logout logout-success-url="/logout"  logout-url= "/doLogout"/>
+         <security:logout logout-success-url="/welcome"  logout-url= "/doLogout"/>
         
 		<!-- BY DEFAULT the URL /j_spring_security_logout triggers logout 
 		NOTE: is it JUST a URL naming convention - no mapping occurs
@@ -63,7 +63,7 @@
 
 	<security:authentication-manager>
 		<security:authentication-provider>
-			<!--<security:password-encoder hash="bcrypt" />-->
+			<security:password-encoder hash="bcrypt" />
 			<security:jdbc-user-service
 				data-source-ref="dataSource"
 				users-by-username-query="select username,password,enabled from User where username=?"

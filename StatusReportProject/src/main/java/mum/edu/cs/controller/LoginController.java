@@ -3,13 +3,19 @@ package mum.edu.cs.controller;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import mum.edu.cs.domain.User;
 import mum.edu.cs.serviceimpl.AdminServiceImpl;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 
 /**
@@ -28,10 +34,11 @@ public class LoginController {
 
         User tmp = adminService.getUserByUsername("admin123456");
         if(tmp == null){
+            PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             User user = new User();
             user.setName("admin");
             user.setUsername("admin123456");
-            user.setPassword("admin123456");
+            user.setPassword(passwordEncoder.encode("admin123456"));
             user.setAuthorities("ROLE_ADMIN");
             user.setEnabled(true);
             adminService.saveUser(user);
@@ -42,7 +49,7 @@ public class LoginController {
     }
 
 
-    @RequestMapping(value = "welcome")
+    @RequestMapping(value = {"/welcome","/",""})
     public String welcome(Model model,Principal principal){
         if(principal != null && principal.getName() != null){
             User user = adminService.getUserByUsername(principal.getName());
@@ -50,5 +57,12 @@ public class LoginController {
         }
 
         return "welcome";
+    }
+
+    @RequestMapping(value = "/doLogout")
+    public String logout(SessionStatus status, HttpServletRequest request){
+        request.getSession().invalidate();
+        status.setComplete();
+        return "redirect:/welcome";
     }
 }

@@ -22,7 +22,7 @@ public class User {
 
 
     @NotNull
-    @Size(min = 6, max = 20, message = "{Size.user}")
+//    @Size(min = 6, max = 20, message = "{Size.user}")
     protected String password;
 
     @NotNull

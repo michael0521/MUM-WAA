@@ -1,5 +1,6 @@
 package mum.edu.cs.controller;
 
+import com.sun.javafx.sg.prism.NGShape;
 import mum.edu.cs.domain.User;
 import mum.edu.cs.service.RoleService;
 import mum.edu.cs.serviceimpl.AdminServiceImpl;
@@ -70,8 +71,10 @@ public class AdminController {
 
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveStudent(@Valid User user, BindingResult result){
+    public String saveStudent(@Valid User user, BindingResult result, Model model){
         if(result.hasErrors()){
+            Map<String,String> roleMap = roleService.getAllRoleMap();
+            model.addAttribute("roleMap",roleMap);
             return JspPath + "userAddForm";
         }
         adminService.saveUser(user);

@@ -35,6 +35,11 @@
     <a href="<spring:url value='/login' />" class=""> <spring:message code="message.login" /> </a>
 </security:authorize>
 
+<security:authorize access="!isAnonymous()">
+    <br>
+    <a href="/doLogout"> <input type="button" value="<spring:message code="message.logout" /> " > </a>
+</security:authorize>
+
 <br>
 <br>
 <span> <a href="/welcome?language=zh_CN">中文</a> </span> | <span> <a href="/welcome?language=en_US"> English </a> </span>
