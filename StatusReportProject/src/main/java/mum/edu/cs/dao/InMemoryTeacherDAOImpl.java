@@ -99,9 +99,9 @@ public class InMemoryTeacherDAOImpl implements TeacherDAO{
 		tasks3.add(task3);
 		report3.setTasks(tasks3);
 		
-		students.put(984001, new Student(984001, "Michael", "12345", report1));
-		students.put(984002, new Student(984002, "Eric", "12345", report2));
-		students.put(984003, new Student(984003, "Robert", "12345", report3));
+		students.put(984001, new Student(984001, "Xiaoming Yang", "12345", report1));
+		students.put(984002, new Student(984002, "Qi Cui", "12345", report2));
+		students.put(984003, new Student(984003, "Shaoyang Su", "12345", report3));
 		
 		return students;
 	}
