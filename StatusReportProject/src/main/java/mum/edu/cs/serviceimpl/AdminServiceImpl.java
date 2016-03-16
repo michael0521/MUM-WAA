@@ -1,14 +1,11 @@
-package mum.edu.cs.service;
+package mum.edu.cs.serviceimpl;
 
-import mum.edu.cs.dao.AdminDAO;
-import mum.edu.cs.dao.TeacherDAO;
-import mum.edu.cs.domain.Professor;
-import mum.edu.cs.domain.Student;
 import mum.edu.cs.domain.User;
+import mum.edu.cs.repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -17,21 +14,22 @@ import java.util.List;
  */
 
 @Service
-public class AdminService {
+public class AdminServiceImpl {
     @Autowired
-    private AdminDAO adminDAO;
+    private AdminRepository adminRepository;
 
     public List<User> getAll(){
-        return adminDAO.getAll();
+        return (List<User>) adminRepository.findAll();
     }
 
     public boolean deleteUser(long uid){
-        return adminDAO.deleteUser(uid);
+        adminRepository.delete(uid);
+        return true;
     }
 
-    public boolean saveUser(User user){
+    public User saveUser(User user){
         if(user.getId() > 0 ){
-            User tmp = adminDAO.getUserById(user.getId());
+            User tmp = adminRepository.findOne(user.getId());
             if(tmp != null && !tmp.getPassword().equals(user.getPassword())){
 
                 PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -39,11 +37,11 @@ public class AdminService {
             }
         }
 
-        return adminDAO.save(user);
+        return adminRepository.save(user);
     }
 
     public User getUserById(Long uid){
-        return adminDAO.getUserById(uid);
+        return adminRepository.findOne(uid) ;
     }
 
 }

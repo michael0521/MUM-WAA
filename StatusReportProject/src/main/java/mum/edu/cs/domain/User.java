@@ -8,6 +8,7 @@ import javax.persistence.Id;
 /**
  * Created by su on 3/14/16.
  */
+
 @Entity
 public class User {
 
@@ -15,11 +16,13 @@ public class User {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
 
-    protected String account;
+    protected String username;
 
     protected String password;
 
     protected String name;
+
+    protected Boolean enabled;
 
     protected String authorities;
 
@@ -39,12 +42,12 @@ public class User {
         this.id = id;
     }
 
-    public String getAccount() {
-        return account;
+    public String getUsername() {
+        return username;
     }
 
-    public void setAccount(String account) {
-        this.account = account;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getName() {
@@ -61,5 +64,13 @@ public class User {
 
     public void setAuthorities(String authorities) {
         this.authorities = authorities;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }

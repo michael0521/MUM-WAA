@@ -1,8 +1,8 @@
 package mum.edu.cs.controller;
 
 import mum.edu.cs.domain.User;
-import mum.edu.cs.service.AdminService;
 import mum.edu.cs.service.RoleService;
+import mum.edu.cs.serviceimpl.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -28,8 +28,9 @@ import java.util.Map;
 public class AdminController {
 
     private String JspPath = "/admin/";
+
     @Autowired
-    private AdminService adminService;
+    private AdminServiceImpl adminService;
 
     @Autowired
     private RoleService roleService;

@@ -22,7 +22,7 @@ public class Student extends User {
 	public Student(int studentId, String name, String password, Report report) {
 		super();
 		this.studentId = studentId;
-		this.account = String.valueOf(studentId);
+		this.username = String.valueOf(studentId);
 		this.name = name;
 		this.password = password;
 		this.report = report;
