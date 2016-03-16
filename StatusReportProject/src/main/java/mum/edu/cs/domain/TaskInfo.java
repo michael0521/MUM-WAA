@@ -1,5 +1,6 @@
 package mum.edu.cs.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,18 +10,19 @@ import javax.persistence.Id;
 public class TaskInfo {
 	private static final long serialVersionUID = 152096185105839L;
 	
-	public TaskInfo(){
-		
-	}
+//	public TaskInfo(){
+//		
+//	}
 	
-	public TaskInfo(String task, String time, String status){
-		this.task = task;
-		this.time = time;
-		this.status = status;
-	}
-	
+//	public TaskInfo(String task, String time, String status){
+//		this.task = task;
+//		this.time = time;
+//		this.status = status;
+//	}
+//	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "TK_ID")
 	private int id;
 	
 	public int getId() {

@@ -9,7 +9,7 @@ import java.util.Map;
  * Created by su on 3/15/16.
  */
 
-@Service
+//@Service
 public class RoleService {
     public Map<String,String> getAllRoleMap(){
         Map<String,String> roleMap = new HashMap<>();

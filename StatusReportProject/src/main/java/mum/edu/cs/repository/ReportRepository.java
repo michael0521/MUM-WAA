@@ -5,7 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import mum.edu.cs.domain.Report;
 
-//@Repository
-public interface ReportRepository {
+@Repository
+public interface ReportRepository extends CrudRepository<Report, Integer>{
 
+	
 }

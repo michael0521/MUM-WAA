@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,12 +16,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import mum.edu.cs.domain.Report;
 import mum.edu.cs.domain.TaskInfo;
 
+
 @Controller
 public class ReportController extends BaseController{
 
 	private static final String jspPath = "reports/";
 	
 	private static List<TaskInfo> initInfos = new ArrayList<>();
+	
+//	@Autowired
+//	ReportService ps;
 	
 	static {
 		initInfos.add(new TaskInfo());

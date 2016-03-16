@@ -15,7 +15,7 @@
       creates implementations for use at runtime.  -->
 
 
-    <jpa:repositories base-package="mum.edu.cs.repository" />
+    
  <bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -63,6 +63,8 @@
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
       <property name="entityManagerFactory" ref="entityManager" />
    </bean>
+   
+   <jpa:repositories base-package="mum.edu.cs.repository"  entity-manager-factory-ref="entityManager"/>
    
    <!-- Scan for  transaction-based resources -->
    	<context:component-scan base-package="mum.edu.cs.serviceimpl" />

@@ -4,11 +4,15 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Max;
@@ -17,37 +21,27 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 
-//@Entity
+@Entity
 public class Report implements Serializable {
 
 	private static final long serialVersionUID = 1520961851058396784L;
 
-	public Report() {
-		
-	}
-	
-//	@Id
-//	@GeneratedValue(strategy=GenerationType.AUTO)
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="RP_ID")
 	int id;
-	
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-//	@OneToMany
+	@OneToMany
+	@JoinColumn(name="TK_ID", referencedColumnName="RP_ID")
 	List<TaskInfo> tasks;
-
-	public List<TaskInfo> getTasks() {
-		return tasks;
-	}
-
-	public void setTasks(List<TaskInfo> tasks) {
-		this.tasks = tasks;
-	}
+//	@JoinTable
+//	  (
+//	      name="REPORT_TASK",
+//	      joinColumns={ @JoinColumn(name="RP_ID", referencedColumnName="RP_ID") },
+//	      inverseJoinColumns={ @JoinColumn(name="TK_ID", referencedColumnName="TK_ID", unique=true) }
+//	  )
+	
 
 	@NotNull(message = "{grade.empty}")
 	@DecimalMax(value = "100.00", message = "{grade.max}")
@@ -56,7 +50,9 @@ public class Report implements Serializable {
 	@NotEmpty(message = "{comment.empty}")
 	private String comment;
 
-	/*private Student student;*/
+//	@OneToOne
+//	@JoinColumn(name="TK_ID")
+//	private Student student;
 
 	@NotEmpty(message = "notes.empty")
 	private String notes;
@@ -69,6 +65,22 @@ public class Report implements Serializable {
 
 	@NotEmpty(message = "date.empty")
 	private String date;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public List<TaskInfo> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<TaskInfo> tasks) {
+		this.tasks = tasks;
+	}
 
 	public BigDecimal getGrade() {
 		return grade;
@@ -118,13 +130,13 @@ public class Report implements Serializable {
 		this.comment = comment;
 	}
 
-/*	public Student getStudent() {
-		return student;
-	}
-
-	public void setStudent(Student student) {
-		this.student = student;
-	}*/
+//	public Student getStudent() {
+//		return student;
+//	}
+//
+//	public void setStudent(Student student) {
+//		this.student = student;
+//	}
 
 	@Override
 	public String toString() {
