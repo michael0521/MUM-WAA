@@ -8,4 +8,6 @@ public interface ReportService {
 	List<Report> getAllReports();
 	
 	Report getReportByLectureAndStu(int lectureId, int stuId);
+	
+	public Report saveReport(Report r);
 }

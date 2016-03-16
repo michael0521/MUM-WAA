@@ -43,10 +43,30 @@ public class ReportController extends BaseController{
 //        return new CollegeListCmd();
 //    }
 	
+	private void saveData(){
+		Report r = new Report();
+		r.setStudentId(100);
+		r.setLectureId(100);
+		r.setTasks(initInfos);
+		r.setSci("xxx");
+		r.setNotes("xxxx");
+		r.setSign("xxx");
+		r.setDate("1980-08-01");
+		
+		r = ps.saveReport(r);
+	}
+	
+	private void fetchData(){
+		Report r = ps.getReportByLectureAndStu(100, 100);
+		System.out.println("xxx " + r);
+	}
 	@RequestMapping(value = "/addReport", method = RequestMethod.GET)
 	public String addReport(@ModelAttribute("newReport") Report report, Model model){
 		report.setTasks(initInfos);  
 		
+		saveData();
+		
+		fetchData();
 		return fullPath("reportForm");
 	}
 	

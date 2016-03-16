@@ -9,17 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.Range;
 
 @Entity
 public class Report implements Serializable {
@@ -32,8 +24,18 @@ public class Report implements Serializable {
 	@Column(name="RP_ID")
 	int id;
 
-	@OneToMany
-	@JoinColumn(name="TK_ID", referencedColumnName="RP_ID")
+	
+//	@OneToMany(cascade = CascadeType.ALL)
+//	@JoinColumn(name="TK_ID", nullable = false)
+//	@JoinTable
+//	  (
+//	      name="REPORT_TASK",
+//	      joinColumns={ @JoinColumn(name="RP_ID", referencedColumnName="RP_ID") },
+//	      inverseJoinColumns={ @JoinColumn(name="TK_ID", referencedColumnName="TK_ID", unique=true) }
+//	  )
+	
+	
+	@Transient
 	List<TaskInfo> tasks;
 	
 	
@@ -41,12 +43,7 @@ public class Report implements Serializable {
 	
 	int studentId;
 	
-//	@JoinTable
-//	  (
-//	      name="REPORT_TASK",
-//	      joinColumns={ @JoinColumn(name="RP_ID", referencedColumnName="RP_ID") },
-//	      inverseJoinColumns={ @JoinColumn(name="TK_ID", referencedColumnName="TK_ID", unique=true) }
-//	  )
+
 	
 
 	public int getLectureId() {
@@ -65,11 +62,11 @@ public class Report implements Serializable {
 		this.studentId = studentId;
 	}
 
-	@NotNull(message = "{grade.empty}")
-	@DecimalMax(value = "100.00", message = "{grade.max}")
-	@DecimalMin(value = "60.00", message = "{grade.min}")
+//	@NotNull(message = "{grade.empty}")
+//	@DecimalMax(value = "100.00", message = "{grade.max}")
+//	@DecimalMin(value = "60.00", message = "{grade.min}")
 	private BigDecimal grade;
-	@NotEmpty(message = "{comment.empty}")
+//	@NotEmpty(message = "{comment.empty}")
 	private String comment;
 
 //	@OneToOne
@@ -162,7 +159,7 @@ public class Report implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Report [grade=" + grade + ", comment=" + comment + ", tasks=" + tasks + ", notes=" + notes + ", sci="
+		return "Report [ id " + id + "grade=" + grade + ", comment=" + comment + ", tasks=" + tasks + ", notes=" + notes + ", sci="
 				+ sci + ", sign=" + sign + ", date=" + date + "]";
 	}
 
