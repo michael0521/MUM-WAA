@@ -161,7 +161,7 @@ public class Report implements Serializable {
 	@Override
 	public String toString() {
 		return "Report [ id " + id + "grade=" + grade + ", comment=" + comment + ", tasks=" + tasks + ", notes=" + notes + ", sci="
-				+ sci + ", sign=" + sign + ", date=" + date + "]";
+				+ sci + ", sign=" + sign + ", date=" + date + " lectureId " + lectureId + " studentId " +studentId;
 	}
 
 }

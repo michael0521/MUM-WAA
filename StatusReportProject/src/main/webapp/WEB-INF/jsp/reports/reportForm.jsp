@@ -47,7 +47,7 @@ th {
 
 	<div>
 	
-	<spring:url  var = "saveReport" value="saveReport" />
+	<spring:url  var = "saveReport" value="/reports/saveReport" />
 	<!-- -->
 	<form:form modelAttribute="newReport"  action= "${saveReport}"  method="post">
 		<table>

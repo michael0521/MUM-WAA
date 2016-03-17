@@ -3,6 +3,7 @@ package mum.edu.cs.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import mum.edu.cs.domain.Report;
 import mum.edu.cs.domain.TaskInfo;
+import mum.edu.cs.domain.User;
 import mum.edu.cs.service.ReportService;
 import mum.edu.cs.service.TeacherService;
 
@@ -34,14 +37,19 @@ public class ReportController extends BaseController{
 	@Autowired
 	TeacherService teacherService;
 	
+	String role;
+	
+	int lecId;
+	int uid;
+	
 	static {
 //		initInfos.add(new TaskInfo());
 //		initInfos.add(new TaskInfo());
 //		initInfos.add(new TaskInfo());
 		
-		initInfos.add(new TaskInfo("Review Slides", "50 mins","cccc"));
-		initInfos.add(new TaskInfo("Do the first lab", "60 mins","cccc"));
-		initInfos.add(new TaskInfo("Do the second lab", "100 mins","cccc"));
+		initInfos.add(new TaskInfo());
+		initInfos.add(new TaskInfo());
+		initInfos.add(new TaskInfo());
 	}
 	
 //	public @ModelAttribute("collegeListCmd")
@@ -67,19 +75,55 @@ public class ReportController extends BaseController{
 		System.out.println("xxx " + r);
 	}
 	
-	@RequestMapping(value = "/addReport", method = RequestMethod.GET)
-	public String addReport(@ModelAttribute("newReport") Report report, Model model){
+	@RequestMapping(value = "/addReport/{lectureId}", method = RequestMethod.GET)
+	public String addReport(@ModelAttribute("newReport") Report report, Model model, @PathVariable int lectureId, HttpSession sesson ){
 		report.setTasks(initInfos);  
+		User u = (User) sesson.getAttribute("user");
+		uid = (int)u.getId();
+		lecId = lectureId;
+
+		Report existR = ps.getReportByLectureAndStu(lectureId, uid);
+		if(existR != null){
+			model.addAttribute("newReport", existR);
+		}
 		
-//		saveData();
-//		
-//		fetchData();
+		
 		return fullPath("reportForm");
+	}
+	
+	@RequestMapping(value = "/addReport/{lectureId}/{studentId}", method = RequestMethod.GET)
+	public String addReport( Model model, @PathVariable int lectureId
+			, @PathVariable int studentId, RedirectAttributes ra){
+//		report.setTasks(initInfos);  
+		
+		Report existR = ps.getReportByLectureAndStu(lectureId, studentId);
+		if(existR != null){
+			model.addAttribute("newReport", existR);	
+		}
+		
+//		lecId = lectureId;
+		System.out.println("lecId " + lectureId);
+		
+		
+		List<String> lectures = teacherService.getAllLectureTitles();
+		
+		ra.addFlashAttribute("lectures", lectures);
+		
+		return "redirect:/teacher/lectures";
+		
+//		return fullPath("reportForm");
 	}
 	
 	@RequestMapping(value="/saveReport", method = RequestMethod.POST)
 	public String saveReport(@Valid @ModelAttribute("newReport")  Report report, BindingResult bindingResult ,Model model
-			,RedirectAttributes ra){
+			,RedirectAttributes ra, HttpSession sesson){
+		
+		User u = (User) sesson.getAttribute("user");
+		report.setLectureId(lecId);
+		report.setStudentId(Integer.valueOf(u.getUsername()));
+		
+		System.out.println("saved report " + report);
+		
 		ps.saveReport(report);
 		
 		List<String> lectures = teacherService.getAllLectureTitles();

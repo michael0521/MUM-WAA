@@ -3,6 +3,7 @@ package mum.edu.cs.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import mum.edu.cs.domain.Report;
 import mum.edu.cs.domain.Student;
 import mum.edu.cs.domain.User;
+import mum.edu.cs.service.ReportService;
 import mum.edu.cs.service.TeacherService;
 
 @Controller
@@ -27,17 +29,21 @@ import mum.edu.cs.service.TeacherService;
 public class TeacherController {
 	
 	private static final String jspPath = "teacher/"; 
+	@Autowired
+	private ReportService rs;
 	
 	@Autowired
 	private TeacherService teacherService;
 	
+	
+	
 	@RequestMapping("/lectures")
-	public String listLectures(Model model){
+	public String listLectures(Model model, HttpSession sesson){
 		List<String> lectures = teacherService.getAllLectureTitles();
 		
 		model.addAttribute("lectures", lectures);
 		
-		model.addAttribute("role", "stu");
+		model.addAttribute("role",User.getAuthRole(sesson));
 		
 		return jspPath + "lectures";
 	}
@@ -45,6 +51,11 @@ public class TeacherController {
 	@RequestMapping("/lecture/{lectureId}/reports")
 	public String listReportsOfLecture(@PathVariable("lectureId") int lectureId, Model model, HttpServletRequest req){
 		List<Student> students = teacherService.getAllStudentsByLecture(lectureId);
+		for(Student t : students){
+			Report r = rs.getReportByLectureAndStu(lectureId, t.getStudentId());
+			t.setReport(r);
+		}
+		
 		System.out.println(students.size());
 		model.addAttribute("students",  students);
 		User u = (User)(req.getSession().getAttribute("user"));

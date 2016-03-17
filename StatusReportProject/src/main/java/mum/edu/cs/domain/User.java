@@ -1,6 +1,7 @@
 package mum.edu.cs.domain;
 
 import javax.persistence.*;
+import javax.servlet.http.HttpSession;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -80,5 +81,16 @@ public class User {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+    
+    @Override
+    public String toString() {
+    
+    	return authorities;
+    }
+    
+    public static String getAuthRole( HttpSession sesson){
+    	User u = (User) sesson.getAttribute("user");
+    	return  u.getAuthorities();
     }
 }

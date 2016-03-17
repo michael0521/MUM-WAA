@@ -15,13 +15,16 @@
 		<c:forEach var="lecture" items="${lectures}" varStatus="lectureIndex">
 			<tr>
 				<td>Lecture ${lectureIndex.index + 1}
-				<c:if test="${role == 'stu'}">
+				<c:if test="${role == 'ROLE_STU'}">
 					<a
-					href="${pageContext.request.contextPath}/reports/addReport">${lecture}</a>
+					href="${pageContext.request.contextPath}/reports/addReport/${lectureIndex.index + 1}">${lecture}</a>
 				</c:if> 
-				<c:if test="${role == 'teacher'}">
+				<c:if test="${role == 'ROLE_PRO'}">
 				<a
-					href="lecture/${lectureIndex.index + 1}/reports">${lecture}</a>
+				/lecture/{lectureId}/reports
+					href="${pageContext.request.contextPath}/teacher/lecture/${lectureIndex.index + 1}/reports">${lecture}</a>
+				<%-- <a
+					href="lecture/${lectureIndex.index + 1}/reports">${lecture}</a> --%>
 					</c:if>
 				</td>
 			</tr>
