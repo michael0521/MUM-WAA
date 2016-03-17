@@ -9,8 +9,9 @@ $(document).ready(function () {
         var name = $("#csrf").attr("name");
         var value = $("#csrf").val();
         data[name] = value;
+        var url = e.target.getAttribute("url")
         $.ajax({
-            url: "/admin/delete",
+            url: url,
             dataType: "json",
             method: "POST",
             data: data,
@@ -22,14 +23,15 @@ $(document).ready(function () {
             }
         });
     }).on("click","#edit",function(e){
-        var url = "/admin/edit/" + e.target.getAttribute("uid");
+        var url = e.target.getAttribute("url")+"/" + e.target.getAttribute("uid");
         window.location.href = url;
     });
 
 
 
-    $("#add_student").on("click", function () {
-        window.location.href = "/admin/add";
+    $("#add_student").on("click", function (e) {
+
+        window.location.href = e.target.getAttribute("url");
     });
 });
 

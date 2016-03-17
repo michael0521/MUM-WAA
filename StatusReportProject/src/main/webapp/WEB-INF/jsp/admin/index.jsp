@@ -11,14 +11,14 @@
 <html>
 <head>
     <title><spring:message code="message.admin.index.title" /> </title>
-    <script src="/resources/js/jquery-1.10.1.min.js"></script>
-    <script src="/resources/js/page.admin.index.js"></script>
+    <script src="<spring:url value='/resources/js/jquery-1.10.1.min.js' /> "></script>
+    <script src="<spring:url  value='/resources/js/page.admin.index.js' /> "></script>
 </head>
 <body>
 
 
 <span><spring:message code="message.admin.index.title" /></span><br>
-<input type="button" id="add_student" value="add" />
+<input type="button" id="add_student" value="add" url="<spring:url value='/admin/add' /> " />
 
 <table style="width:100%" id="table">
 
@@ -33,8 +33,8 @@
             <td>${item.name}</td>
             <td>${item.authorities}</td>
             <td>
-                <input id="delete" uid="${item.getId()}" type="button" value="<spring:message code="message.admin.index.delete" /> "/>
-                <input id="edit" uid="${item.getId()}" type="button" value="<spring:message code="message.admin.index.action" /> " />
+                <input id="delete" uid="${item.getId()}" url="<spring:url value='/admin/delete' />" type="button" value="<spring:message code="message.admin.index.delete" /> "/>
+                <input id="edit" uid="${item.getId()}" url="<spring:url value='/admin/edit' />" type="button" value="<spring:message code="message.admin.index.action" /> " />
             </td>
         </tr>
     </c:forEach>

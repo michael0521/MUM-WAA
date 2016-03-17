@@ -37,12 +37,12 @@
 
 <security:authorize access="!isAnonymous()">
     <br>
-    <a href="doLogout"> <input type="button" value="<spring:message code="message.logout" /> " > </a>
+    <a href="<spring:url value='/doLogout' />"> <input type="button" value="<spring:message code="message.logout" /> " > </a>
 </security:authorize>
 
 <br>
 <br>
-<span> <a href="welcome?language=zh_CN">中文</a> </span> | <span> <a href="welcome?language=en_US"> English </a> </span>
+<span> <a href="<spring:url value='/welcome?language=zh_CN'/>" >中文</a> </span> | <span> <a href="<spring:url value='/welcome?language=en_US'/>"> English </a> </span>
 
 
 </body>
