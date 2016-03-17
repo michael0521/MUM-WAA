@@ -89,11 +89,28 @@ public class LoginController {
         adminService.saveUser(user);
         User stu = new User();
         stu.setName("student");
-        stu.setUsername("student");
+        stu.setUsername("984001");
         stu.setPassword(passwordEncoder.encode("student"));
         stu.setAuthorities("ROLE_STU");
         stu.setEnabled(true);
         adminService.saveUser(stu);
+
+        User stu2 = new User();
+        stu2.setName("student");
+        stu2.setUsername("984002");
+        stu2.setPassword(passwordEncoder.encode("student"));
+        stu2.setAuthorities("ROLE_STU");
+        stu2.setEnabled(true);
+        adminService.saveUser(stu2);
+
+        User stu3 = new User();
+        stu3.setName("student");
+        stu3.setUsername("984003");
+        stu3.setPassword(passwordEncoder.encode("student"));
+        stu3.setAuthorities("ROLE_STU");
+        stu3.setEnabled(true);
+        adminService.saveUser(stu3);
+
 
         User pro = new User();
         pro.setName("student");
@@ -113,6 +130,7 @@ public class LoginController {
 
 
         Student student1 = new Student(984001, 1, "Xiaoming Yang", "12345");
+
         Student student2 = new Student(984003, 1, "Qi Cui", "12345");
         Student student3 = new Student(984002, 1, "Shaoyang Su", "12345");
 
