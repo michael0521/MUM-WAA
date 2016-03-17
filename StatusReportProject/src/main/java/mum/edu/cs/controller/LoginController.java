@@ -42,6 +42,21 @@ public class LoginController {
             user.setAuthorities("ROLE_ADMIN");
             user.setEnabled(true);
             adminService.saveUser(user);
+            User stu = new User();
+            stu.setName("student");
+            stu.setUsername("student");
+            stu.setPassword(passwordEncoder.encode("student"));
+            stu.setAuthorities("ROLE_STU");
+            stu.setEnabled(true);
+            adminService.saveUser(stu);
+
+            User pro = new User();
+            pro.setName("student");
+            pro.setUsername("professor");
+            pro.setPassword(passwordEncoder.encode("professor"));
+            pro.setAuthorities("ROLE_PRO");
+            pro.setEnabled(true);
+            adminService.saveUser(pro);
         }
 
 

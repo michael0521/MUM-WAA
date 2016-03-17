@@ -20,7 +20,7 @@
     <form:errors path="*" cssStyle=" color: red"></form:errors>
     <br>
 
-    <%--<form:hidden path="id"></form:hidden>--%>
+    <form:hidden path="id"></form:hidden>
     <label for="useId">UseId:</label>
     <form:input path="id" disabled="true"></form:input>
 

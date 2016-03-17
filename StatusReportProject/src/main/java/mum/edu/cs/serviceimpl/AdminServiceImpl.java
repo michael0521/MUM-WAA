@@ -35,6 +35,7 @@ public class AdminServiceImpl {
                 PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             }
+//            adminRepository.delete(user.getId());
         }
 
         return adminRepository.save(user);
