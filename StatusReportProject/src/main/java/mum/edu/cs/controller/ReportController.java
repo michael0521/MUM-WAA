@@ -133,6 +133,15 @@ public class ReportController extends BaseController{
 		
 		System.out.println("saved report " + report);
 		
+		if(User.getAuthRole(sesson).equals("ROLE_PRO")){
+			Report orR = ps.getReportByLectureAndStu(lecId, sId);
+			if(orR != null){
+				orR.setComment(report.getComment());
+				orR.setGrade(report.getGrade());
+				report = orR;
+			}
+		}
+		
 		ps.saveReport(report);
 		
 		List<String> lectures = teacherService.getAllLectureTitles();
