@@ -12,7 +12,7 @@
 <table border = '1'>
 <c:forEach var="student" items = "${students}" varStatus="lectureIndex">
 		<%-- <tr><td>  ${student.studentId} <a href="${student.studentId}/grade">${student.name}</a></td></tr> --%>
-		<tr><td>  ${student.studentId} <a href="/StatusResportProject/addReport">${student.name}</a></td></tr>
+		<tr><td>  ${student.studentId} <a href="${pageContext.request.contextPath}/addReport">${student.name}</a></td></tr>
 </c:forEach>
 </table>
 </body>

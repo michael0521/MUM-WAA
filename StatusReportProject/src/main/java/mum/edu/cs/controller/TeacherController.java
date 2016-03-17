@@ -28,8 +28,6 @@ public class TeacherController {
 	
 	private static final String jspPath = "teacher/"; 
 	
-//	"lecture/${lectureIndex.index + 1}/reports">${lecture}<
-	
 	@Autowired
 	private TeacherService teacherService;
 	
