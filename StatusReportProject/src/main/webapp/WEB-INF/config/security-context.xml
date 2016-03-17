@@ -33,8 +33,7 @@
 	<!-- the more specific rules need to come first, followed by the more general ones. -->
 	<!-- COMmENT out the following to see @Service METHOD level authorization -->
 	    <security:intercept-url pattern="/admin*" access="hasRole('ROLE_ADMIN')" />
-		<security:intercept-url pattern="/stu*" access="hasRole('ROLE_STU')" />
-		<security:intercept-url pattern="/teacher*" access="hasRole('ROLE_PRO')" />
+		<security:intercept-url pattern="/teacher*" access="hasAnyRole('ROLE_PRO','ROLE_STU')" />
 	  <!--<security:intercept-url pattern="/members" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')"  />-->
 <!-- Switch to HTTPS -->
  <!-- 	  <security:intercept-url pattern="/login" access="isAnonymous()" requires-channel="https"/>

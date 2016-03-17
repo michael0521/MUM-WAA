@@ -29,6 +29,10 @@
     <a href="<spring:url value='/teacher/lectures' />" class=""> <spring:message code="message.welcome.gradeReport" /> </a>
 </security:authorize>
 
+<security:authorize access="hasRole('ROLE_STU')">
+    <a href="<spring:url value='/teacher/lectures' />" class=""> <spring:message code="message.welcome.lectures" /> </a>
+</security:authorize>
+
 
 
 <security:authorize access="isAnonymous()">
