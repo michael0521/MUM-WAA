@@ -5,6 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+	<link rel="icon" href="<spring:url value='/favicon.ico' />">
 <title>All Lectures</title>
 </head>
 <body>

@@ -34,6 +34,7 @@
     </mvc:interceptors>
 
     <mvc:resources location="/resources/" mapping="/resources/**"/>
+    <mvc:resources location="/resources/img/favicon.ico" mapping="/favicon.ico"/>
     <!--
             whenever a request start with /resources/ then look in to resources folder -->
 

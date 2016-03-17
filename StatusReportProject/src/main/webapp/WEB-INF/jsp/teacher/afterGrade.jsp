@@ -6,6 +6,7 @@
 
 <html>
 <head>
+    <link rel="icon" href="<spring:url value='/favicon.ico' />">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>This report is graded!</title>
 </head>

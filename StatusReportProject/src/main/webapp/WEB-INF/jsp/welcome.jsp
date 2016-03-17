@@ -10,6 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="icon" href="<spring:url value='/favicon.ico' />">
     <title><spring:message code="message.welcome.title"/> </title>
 </head>
 <body>
