@@ -46,7 +46,7 @@ th {
 
 	<div>
 	
-	<spring:url  var = "saveReport" value="/saveReport" />
+	<spring:url  var = "saveReport" value="saveReport" />
 	<!-- -->
 	<form:form modelAttribute="newReport"  action= "${saveReport}"  method="post">
 		<table>
@@ -95,9 +95,21 @@ th {
 		<p>Date:&nbsp;&nbsp;&nbsp; <form:input width="100px" type="date" path="date"/></p>
 		
 		<br/>
+				
+		<c:if test="${newReport.grade == 0}">
+			<br/>
+			<p>Grade: <form:input width="50" type="text" path="grade" /></p>
+		</c:if>
+		
+		<c:if test="${empty newReport.comment}">
+			<br/>
+			<p>Comments:
+			<p><form:textarea rows="20" cols="100" path="comment" /></p>
+			<br/>
+		</c:if>
+		
 		
 		<input type="submit" style="margin-left:70%"/>
-		
 		</form:form>
 	</div>
 </body>

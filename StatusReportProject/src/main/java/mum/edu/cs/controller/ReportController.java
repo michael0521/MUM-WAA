@@ -12,13 +12,16 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import mum.edu.cs.domain.Report;
 import mum.edu.cs.domain.TaskInfo;
 import mum.edu.cs.service.ReportService;
+import mum.edu.cs.service.TeacherService;
 
 
 @Controller
+@RequestMapping("/reports")
 public class ReportController extends BaseController{
 
 	private static final String jspPath = "reports/";
@@ -27,6 +30,9 @@ public class ReportController extends BaseController{
 	
 	@Autowired
 	ReportService ps;
+	
+	@Autowired
+	TeacherService teacherService;
 	
 	static {
 //		initInfos.add(new TaskInfo());
@@ -60,20 +66,27 @@ public class ReportController extends BaseController{
 		Report r = ps.getReportByLectureAndStu(100, 100);
 		System.out.println("xxx " + r);
 	}
+	
 	@RequestMapping(value = "/addReport", method = RequestMethod.GET)
 	public String addReport(@ModelAttribute("newReport") Report report, Model model){
 		report.setTasks(initInfos);  
 		
-		saveData();
-		
-		fetchData();
+//		saveData();
+//		
+//		fetchData();
 		return fullPath("reportForm");
 	}
 	
 	@RequestMapping(value="/saveReport", method = RequestMethod.POST)
-	public String saveReport(@Valid @ModelAttribute("newReport")  Report report, BindingResult bindingResult ,Model model){
-		System.out.println(report);
-		return fullPath("reportForm");
+	public String saveReport(@Valid @ModelAttribute("newReport")  Report report, BindingResult bindingResult ,Model model
+			,RedirectAttributes ra){
+		ps.saveReport(report);
+		
+		List<String> lectures = teacherService.getAllLectureTitles();
+		
+		ra.addFlashAttribute("lectures", lectures);
+		
+		return "redirect:/teacher/lectures";
 	}
 	
 	

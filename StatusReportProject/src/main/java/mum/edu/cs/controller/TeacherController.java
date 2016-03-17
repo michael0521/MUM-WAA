@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import mum.edu.cs.domain.Report;
 import mum.edu.cs.domain.Student;
+import mum.edu.cs.domain.User;
 import mum.edu.cs.service.TeacherService;
 
 @Controller
@@ -27,6 +28,8 @@ public class TeacherController {
 	
 	private static final String jspPath = "teacher/"; 
 	
+//	"lecture/${lectureIndex.index + 1}/reports">${lecture}<
+	
 	@Autowired
 	private TeacherService teacherService;
 	
@@ -35,14 +38,19 @@ public class TeacherController {
 		List<String> lectures = teacherService.getAllLectureTitles();
 		
 		model.addAttribute("lectures", lectures);
+		
+		model.addAttribute("role", "stu");
+		
 		return jspPath + "lectures";
 	}
 	
 	@RequestMapping("/lecture/{lectureId}/reports")
-	public String listReportsOfLecture(@PathVariable("lectureId") int lectureId, Model model){
+	public String listReportsOfLecture(@PathVariable("lectureId") int lectureId, Model model, HttpServletRequest req){
 		List<Student> students = teacherService.getAllStudentsByLecture(lectureId);
 		System.out.println(students.size());
 		model.addAttribute("students",  students);
+		User u = (User)(req.getSession().getAttribute("user"));
+		
 		return jspPath + "reports";
 	}
 	

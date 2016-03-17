@@ -30,7 +30,7 @@ public class ReportServiceImpl implements ReportService{
 		
 		Report r =  repo.getReportByLectureAndStu(lectureId, stuId);
 		if(r != null){
-			 r.setTasks(tkRepo.getReportByLectureAndStu(r.getId()));;
+			 r.setTasks(tkRepo.getTasksByReportId(r.getId()));;
 		}
 		
 		return r;

@@ -1,0 +1,156 @@
+2016-03-16 22:16:28 INFO  DefaultTestContextBootstrapper:259 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2016-03-16 22:16:28 INFO  DefaultTestContextBootstrapper:185 - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@9629756, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@62ee68d8, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@735b5592, org.springframework.test.context.support.DirtiesContextTestExecutionListener@58651fd0, org.springframework.test.context.transaction.TransactionalTestExecutionListener@4520ebad, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@5419f379]
+2016-03-16 22:16:28 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from URL [file:src/main/webapp/WEB-INF/config/applicationContext.xml]
+2016-03-16 22:16:29 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from URL [file:src/main/webapp/WEB-INF/config/springmvc-config.xml]
+2016-03-16 22:16:29 INFO  GenericApplicationContext:578 - Refreshing org.springframework.context.support.GenericApplicationContext@31ef45e3: startup date [Wed Mar 16 22:16:29 CDT 2016]; root of context hierarchy
+2016-03-16 22:16:30 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+2016-03-16 22:16:30 INFO  LocalContainerEntityManagerFactoryBean:339 - Building JPA container EntityManagerFactory for persistence unit 'default'
+2016-03-16 22:16:30 INFO  LogHelper:46 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2016-03-16 22:16:30 INFO  Version:54 - HHH000412: Hibernate Core {4.3.11.Final}
+2016-03-16 22:16:30 INFO  Environment:239 - HHH000206: hibernate.properties not found
+2016-03-16 22:16:30 INFO  Environment:346 - HHH000021: Bytecode provider name : javassist
+2016-03-16 22:16:30 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2016-03-16 22:16:31 INFO  Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-03-16 22:16:31 INFO  ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-03-16 22:16:31 INFO  Version:17 - HV000001: Hibernate Validator 5.2.2.Final
+2016-03-16 22:16:32 INFO  SchemaExport:344 - HHH000227: Running hbm2ddl schema export
+2016-03-16 22:16:32 DEBUG SQL:109 - drop table if exists Lecture
+2016-03-16 22:16:32 DEBUG SQL:109 - drop table if exists Report
+2016-03-16 22:16:32 DEBUG SQL:109 - drop table if exists Student
+2016-03-16 22:16:32 DEBUG SQL:109 - drop table if exists TaskInfo
+2016-03-16 22:16:32 DEBUG SQL:109 - drop table if exists User
+2016-03-16 22:16:32 DEBUG SQL:109 - create table Lecture (Id integer not null auto_increment, title varchar(255), primary key (Id))
+2016-03-16 22:16:32 DEBUG SQL:109 - create table Report (RP_ID integer not null auto_increment, comment varchar(255), date varchar(255) not null, grade integer not null, lectureId integer not null, notes varchar(255) not null, sci varchar(255) not null, sign varchar(255) not null, studentId integer not null, primary key (RP_ID))
+2016-03-16 22:16:32 DEBUG SQL:109 - create table Student (id integer not null auto_increment, lectureId integer not null, name varchar(255), password varchar(255), studentId integer not null, primary key (id))
+2016-03-16 22:16:32 DEBUG SQL:109 - create table TaskInfo (TK_ID integer not null auto_increment, reportId integer not null, status varchar(255), task varchar(255), time varchar(255), primary key (TK_ID))
+2016-03-16 22:16:32 DEBUG SQL:109 - create table User (id bigint not null auto_increment, authorities varchar(255) not null, enabled bit, name varchar(20) not null, password varchar(255) not null, username varchar(20) not null, primary key (id))
+2016-03-16 22:16:32 DEBUG SQL:109 - alter table User add constraint UK_jreodf78a7pl5qidfh43axdfb unique (username)
+2016-03-16 22:16:32 INFO  SchemaExport:406 - HHH000230: Schema export complete
+2016-03-16 22:16:33 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/admin/ || /admin],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.AdminController.index(org.springframework.ui.Model)
+2016-03-16 22:16:33 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/admin/delete],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void mum.edu.cs.controller.AdminController.deleteStudent(java.lang.Long,javax.servlet.http.HttpServletRequest)
+2016-03-16 22:16:33 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/admin/add],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.AdminController.addStudentForm(mum.edu.cs.domain.User,org.springframework.ui.Model)
+2016-03-16 22:16:33 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/admin/edit/{uid}],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.AdminController.editUserFrom(long,org.springframework.ui.Model)
+2016-03-16 22:16:33 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/admin/save],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.AdminController.saveStudent(mum.edu.cs.domain.User,org.springframework.validation.BindingResult,org.springframework.ui.Model)
+2016-03-16 22:16:33 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/welcome || / || ],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.LoginController.welcome(org.springframework.ui.Model,java.security.Principal)
+2016-03-16 22:16:33 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/login],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.LoginController.login()
+2016-03-16 22:16:33 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/doLogout],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.LoginController.logout(org.springframework.web.bind.support.SessionStatus,javax.servlet.http.HttpServletRequest)
+2016-03-16 22:16:33 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/saveReport],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.ReportController.saveReport(mum.edu.cs.domain.Report,org.springframework.validation.BindingResult,org.springframework.ui.Model,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2016-03-16 22:16:33 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/addReport],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.ReportController.addReport(mum.edu.cs.domain.Report,org.springframework.ui.Model)
+2016-03-16 22:16:33 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/teacher/lectures],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.TeacherController.listLectures(org.springframework.ui.Model)
+2016-03-16 22:16:33 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/teacher/lecture/{lectureId}/reports],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.TeacherController.listReportsOfLecture(int,org.springframework.ui.Model,javax.servlet.http.HttpServletRequest)
+2016-03-16 22:16:33 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/teacher/lecture/{lectureId}/{studentId}/grade],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.TeacherController.getGradeForm(int,int,org.springframework.ui.Model)
+2016-03-16 22:16:33 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/teacher/lecture/{lectureId}/{studentId}/grade],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.TeacherController.processGradeForm(int,int,mum.edu.cs.domain.Report,org.springframework.validation.BindingResult,javax.servlet.http.HttpServletRequest,org.springframework.ui.Model)
+2016-03-16 22:16:33 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/teacher/lecture/{lectureId}/{studentId}/result],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.TeacherController.getGrade(mum.edu.cs.domain.Report,int,int,org.springframework.ui.Model)
+2016-03-16 22:16:33 INFO  RequestMappingHandlerAdapter:517 - Looking for @ControllerAdvice: org.springframework.context.support.GenericApplicationContext@31ef45e3: startup date [Wed Mar 16 22:16:29 CDT 2016]; root of context hierarchy
+2016-03-16 22:16:34 INFO  RequestMappingHandlerAdapter:517 - Looking for @ControllerAdvice: org.springframework.context.support.GenericApplicationContext@31ef45e3: startup date [Wed Mar 16 22:16:29 CDT 2016]; root of context hierarchy
+2016-03-16 22:16:34 INFO  ExceptionHandlerExceptionResolver:267 - Detected @ExceptionHandler methods in exceptionController
+2016-03-16 22:16:34 INFO  SimpleUrlHandlerMapping:314 - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into Lecture (title) values (?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into Lecture (title) values (?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into Lecture (title) values (?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into Student (lectureId, name, password, studentId) values (?, ?, ?, ?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into Student (lectureId, name, password, studentId) values (?, ?, ?, ?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into Student (lectureId, name, password, studentId) values (?, ?, ?, ?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into Student (lectureId, name, password, studentId) values (?, ?, ?, ?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into Student (lectureId, name, password, studentId) values (?, ?, ?, ?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into Student (lectureId, name, password, studentId) values (?, ?, ?, ?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into Student (lectureId, name, password, studentId) values (?, ?, ?, ?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into Student (lectureId, name, password, studentId) values (?, ?, ?, ?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into Student (lectureId, name, password, studentId) values (?, ?, ?, ?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into Report (comment, date, grade, lectureId, notes, sci, sign, studentId) values (?, ?, ?, ?, ?, ?, ?, ?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into Report (comment, date, grade, lectureId, notes, sci, sign, studentId) values (?, ?, ?, ?, ?, ?, ?, ?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into Report (comment, date, grade, lectureId, notes, sci, sign, studentId) values (?, ?, ?, ?, ?, ?, ?, ?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into Report (comment, date, grade, lectureId, notes, sci, sign, studentId) values (?, ?, ?, ?, ?, ?, ?, ?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into Report (comment, date, grade, lectureId, notes, sci, sign, studentId) values (?, ?, ?, ?, ?, ?, ?, ?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into Report (comment, date, grade, lectureId, notes, sci, sign, studentId) values (?, ?, ?, ?, ?, ?, ?, ?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into Report (comment, date, grade, lectureId, notes, sci, sign, studentId) values (?, ?, ?, ?, ?, ?, ?, ?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into TaskInfo (reportId, status, task, time) values (?, ?, ?, ?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into TaskInfo (reportId, status, task, time) values (?, ?, ?, ?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into TaskInfo (reportId, status, task, time) values (?, ?, ?, ?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into TaskInfo (reportId, status, task, time) values (?, ?, ?, ?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into TaskInfo (reportId, status, task, time) values (?, ?, ?, ?)
+2016-03-16 22:16:34 DEBUG SQL:109 - insert into TaskInfo (reportId, status, task, time) values (?, ?, ?, ?)
+2016-03-16 22:16:35 DEBUG SQL:109 - insert into TaskInfo (reportId, status, task, time) values (?, ?, ?, ?)
+2016-03-16 22:16:35 DEBUG SQL:109 - select lecture0_.Id as Id1_0_, lecture0_.title as title2_0_ from Lecture lecture0_
+2016-03-16 22:16:35 INFO  GenericApplicationContext:960 - Closing org.springframework.context.support.GenericApplicationContext@31ef45e3: startup date [Wed Mar 16 22:16:29 CDT 2016]; root of context hierarchy
+2016-03-16 22:16:35 INFO  LocalContainerEntityManagerFactoryBean:462 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2016-03-16 22:20:11 INFO  DefaultTestContextBootstrapper:259 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2016-03-16 22:20:11 INFO  DefaultTestContextBootstrapper:185 - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@9629756, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@62ee68d8, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@735b5592, org.springframework.test.context.support.DirtiesContextTestExecutionListener@58651fd0, org.springframework.test.context.transaction.TransactionalTestExecutionListener@4520ebad, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@5419f379]
+2016-03-16 22:20:11 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from URL [file:src/main/webapp/WEB-INF/config/applicationContext.xml]
+2016-03-16 22:20:11 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from URL [file:src/main/webapp/WEB-INF/config/springmvc-config.xml]
+2016-03-16 22:20:12 INFO  GenericApplicationContext:578 - Refreshing org.springframework.context.support.GenericApplicationContext@31ef45e3: startup date [Wed Mar 16 22:20:12 CDT 2016]; root of context hierarchy
+2016-03-16 22:20:12 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+2016-03-16 22:20:12 INFO  LocalContainerEntityManagerFactoryBean:339 - Building JPA container EntityManagerFactory for persistence unit 'default'
+2016-03-16 22:20:12 INFO  LogHelper:46 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2016-03-16 22:20:12 INFO  Version:54 - HHH000412: Hibernate Core {4.3.11.Final}
+2016-03-16 22:20:12 INFO  Environment:239 - HHH000206: hibernate.properties not found
+2016-03-16 22:20:12 INFO  Environment:346 - HHH000021: Bytecode provider name : javassist
+2016-03-16 22:20:13 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2016-03-16 22:20:13 INFO  Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-03-16 22:20:14 INFO  ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-03-16 22:20:14 INFO  Version:17 - HV000001: Hibernate Validator 5.2.2.Final
+2016-03-16 22:20:14 INFO  SchemaExport:344 - HHH000227: Running hbm2ddl schema export
+2016-03-16 22:20:14 DEBUG SQL:109 - drop table if exists Lecture
+2016-03-16 22:20:14 DEBUG SQL:109 - drop table if exists Report
+2016-03-16 22:20:14 DEBUG SQL:109 - drop table if exists Student
+2016-03-16 22:20:14 DEBUG SQL:109 - drop table if exists TaskInfo
+2016-03-16 22:20:14 DEBUG SQL:109 - drop table if exists User
+2016-03-16 22:20:14 DEBUG SQL:109 - create table Lecture (Id integer not null auto_increment, title varchar(255), primary key (Id))
+2016-03-16 22:20:14 DEBUG SQL:109 - create table Report (RP_ID integer not null auto_increment, comment varchar(255), date varchar(255) not null, grade integer not null, lectureId integer not null, notes varchar(255) not null, sci varchar(255) not null, sign varchar(255) not null, studentId integer not null, primary key (RP_ID))
+2016-03-16 22:20:14 DEBUG SQL:109 - create table Student (id integer not null auto_increment, lectureId integer not null, name varchar(255), password varchar(255), studentId integer not null, primary key (id))
+2016-03-16 22:20:14 DEBUG SQL:109 - create table TaskInfo (TK_ID integer not null auto_increment, reportId integer not null, status varchar(255), task varchar(255), time varchar(255), primary key (TK_ID))
+2016-03-16 22:20:14 DEBUG SQL:109 - create table User (id bigint not null auto_increment, authorities varchar(255) not null, enabled bit, name varchar(20) not null, password varchar(255) not null, username varchar(20) not null, primary key (id))
+2016-03-16 22:20:14 DEBUG SQL:109 - alter table User add constraint UK_jreodf78a7pl5qidfh43axdfb unique (username)
+2016-03-16 22:20:14 INFO  SchemaExport:406 - HHH000230: Schema export complete
+2016-03-16 22:20:15 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/admin/ || /admin],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.AdminController.index(org.springframework.ui.Model)
+2016-03-16 22:20:15 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/admin/delete],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void mum.edu.cs.controller.AdminController.deleteStudent(java.lang.Long,javax.servlet.http.HttpServletRequest)
+2016-03-16 22:20:15 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/admin/add],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.AdminController.addStudentForm(mum.edu.cs.domain.User,org.springframework.ui.Model)
+2016-03-16 22:20:15 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/admin/edit/{uid}],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.AdminController.editUserFrom(long,org.springframework.ui.Model)
+2016-03-16 22:20:15 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/admin/save],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.AdminController.saveStudent(mum.edu.cs.domain.User,org.springframework.validation.BindingResult,org.springframework.ui.Model)
+2016-03-16 22:20:15 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/doLogout],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.LoginController.logout(org.springframework.web.bind.support.SessionStatus,javax.servlet.http.HttpServletRequest)
+2016-03-16 22:20:15 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/login],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.LoginController.login()
+2016-03-16 22:20:15 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/welcome || / || ],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.LoginController.welcome(org.springframework.ui.Model,java.security.Principal)
+2016-03-16 22:20:15 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/reports/saveReport],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.ReportController.saveReport(mum.edu.cs.domain.Report,org.springframework.validation.BindingResult,org.springframework.ui.Model,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2016-03-16 22:20:15 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/reports/addReport],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.ReportController.addReport(mum.edu.cs.domain.Report,org.springframework.ui.Model)
+2016-03-16 22:20:15 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/teacher/lectures],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.TeacherController.listLectures(org.springframework.ui.Model)
+2016-03-16 22:20:15 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/teacher/lecture/{lectureId}/reports],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.TeacherController.listReportsOfLecture(int,org.springframework.ui.Model,javax.servlet.http.HttpServletRequest)
+2016-03-16 22:20:15 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/teacher/lecture/{lectureId}/{studentId}/grade],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.TeacherController.getGradeForm(int,int,org.springframework.ui.Model)
+2016-03-16 22:20:15 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/teacher/lecture/{lectureId}/{studentId}/grade],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.TeacherController.processGradeForm(int,int,mum.edu.cs.domain.Report,org.springframework.validation.BindingResult,javax.servlet.http.HttpServletRequest,org.springframework.ui.Model)
+2016-03-16 22:20:15 INFO  RequestMappingHandlerMapping:217 - Mapped "{[/teacher/lecture/{lectureId}/{studentId}/result],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String mum.edu.cs.controller.TeacherController.getGrade(mum.edu.cs.domain.Report,int,int,org.springframework.ui.Model)
+2016-03-16 22:20:16 INFO  RequestMappingHandlerAdapter:517 - Looking for @ControllerAdvice: org.springframework.context.support.GenericApplicationContext@31ef45e3: startup date [Wed Mar 16 22:20:12 CDT 2016]; root of context hierarchy
+2016-03-16 22:20:16 INFO  RequestMappingHandlerAdapter:517 - Looking for @ControllerAdvice: org.springframework.context.support.GenericApplicationContext@31ef45e3: startup date [Wed Mar 16 22:20:12 CDT 2016]; root of context hierarchy
+2016-03-16 22:20:16 INFO  ExceptionHandlerExceptionResolver:267 - Detected @ExceptionHandler methods in exceptionController
+2016-03-16 22:20:16 INFO  SimpleUrlHandlerMapping:314 - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+2016-03-16 22:20:16 DEBUG SQL:109 - insert into Lecture (title) values (?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into Lecture (title) values (?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into Lecture (title) values (?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into Student (lectureId, name, password, studentId) values (?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into Student (lectureId, name, password, studentId) values (?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into Student (lectureId, name, password, studentId) values (?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into Student (lectureId, name, password, studentId) values (?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into Student (lectureId, name, password, studentId) values (?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into Student (lectureId, name, password, studentId) values (?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into Student (lectureId, name, password, studentId) values (?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into Student (lectureId, name, password, studentId) values (?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into Student (lectureId, name, password, studentId) values (?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into Report (comment, date, grade, lectureId, notes, sci, sign, studentId) values (?, ?, ?, ?, ?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into Report (comment, date, grade, lectureId, notes, sci, sign, studentId) values (?, ?, ?, ?, ?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into Report (comment, date, grade, lectureId, notes, sci, sign, studentId) values (?, ?, ?, ?, ?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into Report (comment, date, grade, lectureId, notes, sci, sign, studentId) values (?, ?, ?, ?, ?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into Report (comment, date, grade, lectureId, notes, sci, sign, studentId) values (?, ?, ?, ?, ?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into Report (comment, date, grade, lectureId, notes, sci, sign, studentId) values (?, ?, ?, ?, ?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into Report (comment, date, grade, lectureId, notes, sci, sign, studentId) values (?, ?, ?, ?, ?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into TaskInfo (reportId, status, task, time) values (?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into TaskInfo (reportId, status, task, time) values (?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into TaskInfo (reportId, status, task, time) values (?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into TaskInfo (reportId, status, task, time) values (?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into TaskInfo (reportId, status, task, time) values (?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into TaskInfo (reportId, status, task, time) values (?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - insert into TaskInfo (reportId, status, task, time) values (?, ?, ?, ?)
+2016-03-16 22:20:17 DEBUG SQL:109 - select lecture0_.Id as Id1_0_, lecture0_.title as title2_0_ from Lecture lecture0_
+2016-03-16 22:20:17 INFO  GenericApplicationContext:960 - Closing org.springframework.context.support.GenericApplicationContext@31ef45e3: startup date [Wed Mar 16 22:20:12 CDT 2016]; root of context hierarchy
+2016-03-16 22:20:18 INFO  LocalContainerEntityManagerFactoryBean:462 - Closing JPA EntityManagerFactory for persistence unit 'default'

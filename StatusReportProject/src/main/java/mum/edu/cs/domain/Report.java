@@ -60,12 +60,13 @@ public class Report implements Serializable {
 
 	public void setStudentId(int studentId) {
 		this.studentId = studentId;
+		grade = 5;
 	}
 
 //	@NotNull(message = "{grade.empty}")
 //	@DecimalMax(value = "100.00", message = "{grade.max}")
 //	@DecimalMin(value = "60.00", message = "{grade.min}")
-	private BigDecimal grade;
+	private int grade;
 //	@NotEmpty(message = "{comment.empty}")
 	private String comment;
 
@@ -101,11 +102,11 @@ public class Report implements Serializable {
 		this.tasks = tasks;
 	}
 
-	public BigDecimal getGrade() {
+	public int getGrade() {
 		return grade;
 	}
 
-	public void setGrade(BigDecimal grade) {
+	public void setGrade(int grade) {
 		this.grade = grade;
 	}
 

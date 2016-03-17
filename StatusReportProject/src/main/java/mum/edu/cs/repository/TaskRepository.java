@@ -14,6 +14,6 @@ import mum.edu.cs.domain.TaskInfo;
 public interface TaskRepository extends CrudRepository<TaskInfo	, Integer>{
 
 	@Query("select r from TaskInfo r where r.reportId = :reportId")
-	List<TaskInfo> getReportByLectureAndStu(@Param("reportId") int rd);
+	List<TaskInfo> getTasksByReportId(@Param("reportId") int rd);
 	
 }
