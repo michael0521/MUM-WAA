@@ -22,7 +22,7 @@ public class InMemoryTeacherDAOImpl implements TeacherDAO{
 	public List<Lecture> getAllLectures() {
 		List<Lecture> lectures = new ArrayList<>();
 		
-		Lecture lecture1 = new Lecture("Spring MVC Introduction");
+		/*Lecture lecture1 = new Lecture("Spring MVC Introduction");
 		lecture1.setStudents(getAllStudents());
 		Lecture lecture2 = new Lecture("Spring MVC Servlet");
 		lecture2.setStudents(getAllStudents());
@@ -31,16 +31,18 @@ public class InMemoryTeacherDAOImpl implements TeacherDAO{
 		
 		lectures.add(lecture1);
 		lectures.add(lecture2);
-		lectures.add(lecture3);
+		lectures.add(lecture3);*/
 		
 		return lectures;
 	}
 
 	@Override
 	public Map<Integer, Student> getStudentsByLecture(int lectureId) {
-		List<Lecture> lectures = getAllLectures();
+		/*List<Lecture> lectures = getAllLectures();
 		Lecture lecture = lectures.get(lectureId-1);
-		return lecture.getStudents();
+		return lecture.getStudents();*/
+		
+		return null;
 	}
 
 	@Override

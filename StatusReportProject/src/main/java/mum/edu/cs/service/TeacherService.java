@@ -12,10 +12,26 @@ import mum.edu.cs.domain.Lecture;
 import mum.edu.cs.domain.Report;
 import mum.edu.cs.domain.Student;
 
-@Service
-public class TeacherService {
+public interface TeacherService {
 	
-	@Autowired
+	List<Lecture> getAllLectures();
+	
+	List<Student> getStudentsByLecture(int lectureId);
+
+	Report getReportByStudentAndLecture(int lectureId, int studentId);
+	
+	Report saveReportByStudentAndLecture(int lectureId, int studentId, Report report);
+
+	Report saveReport(int lectureId, int studentId, Report reportAfterGraded);
+
+	List<Student> getAllStudentsByLecture(int lectureId);
+
+	List<String> getAllLectureTitles();
+	
+	
+	
+	
+	/*@Autowired
 	private TeacherDAO teacherDAO;
 	
 	public List<String> getAllLectureTitles(){
@@ -51,7 +67,7 @@ public class TeacherService {
 
 	public void setTeacherDAO(TeacherDAO teacherDAO) {
 		this.teacherDAO = teacherDAO;
-	}
+	}*/
 	
 	
 }

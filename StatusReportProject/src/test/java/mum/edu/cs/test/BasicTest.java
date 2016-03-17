@@ -41,31 +41,6 @@ public class BasicTest {
 	@Autowired
 	TaskRepository taskRepository;
 
-	//@Test
-	public void testService(){
-		List<Student> students = new ArrayList<>();
-		Lecture lecture = new Lecture();
-		lecture.setTitle("Spring Validation");
-		
-		Report report1 = new Report();
-		List<TaskInfo> tasks1 = new ArrayList<>();
-		TaskInfo task1 = new TaskInfo();
-		task1.setTask("Task AAA");
-		task1.setTime("30 min");
-		task1.setStatus("Done");
-		report1.setNotes("This is a note A");
-		report1.setSci("This is a SCI point A");
-		report1.setSign("Xiaoming Yang");
-		report1.setDate(LocalDate.now().toString());
-		tasks1.add(task1);
-		report1.setTasks(tasks1);
-		
-		Student student1 = new Student(984001, "Xiaoming Yang", "12345", report1);
-		students.add(student1);
-		
-		lecture.setStudents(students);
-		lectureRepository.save(lecture);
-	}
 	
 	@Test
 	public void testData(){
@@ -79,13 +54,27 @@ public class BasicTest {
 		lectureRepository.save(lecture3);
 		
 		
-		Student student1 = new Student(984001, "Xiaoming Yang", "12345");
-		Student student2 = new Student(984003, "Qi Cui", "12345");
-		Student student3 = new Student(984002, "Shaoyang Su", "12345");
+		Student student1 = new Student(984001, 1, "Xiaoming Yang", "12345");
+		Student student2 = new Student(984003, 1, "Qi Cui", "12345");
+		Student student3 = new Student(984002, 1, "Shaoyang Su", "12345");
+		
+		Student student4 = new Student(984001, 2, "Xiaoming Yang", "12345");
+		Student student5 = new Student(984003, 2, "Qi Cui", "12345");
+		Student student6 = new Student(984002, 2, "Shaoyang Su", "12345");
+		
+		Student student7 = new Student(984001, 3, "Xiaoming Yang", "12345");
+		Student student8 = new Student(984003, 3, "Qi Cui", "12345");
+		Student student9 = new Student(984002, 3, "Shaoyang Su", "12345");
 		
 		studentRepository.save(student1);
 		studentRepository.save(student2);
 		studentRepository.save(student3);
+		studentRepository.save(student4);
+		studentRepository.save(student5);
+		studentRepository.save(student6);
+		studentRepository.save(student7);
+		studentRepository.save(student8);
+		studentRepository.save(student9);
 		
 		
 		Report report11 = new Report();	
@@ -205,10 +194,12 @@ public class BasicTest {
 		taskRepository.save(task6);
 		taskRepository.save(task7);
 		
-		
-		
-		
-		
 	}
+	
+	@Test
+	public void testService(){
+		System.out.println(lectureRepository.findAll());
+	}
+	
 
 }

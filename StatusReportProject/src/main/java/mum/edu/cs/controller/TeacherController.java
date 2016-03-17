@@ -51,7 +51,8 @@ public class TeacherController {
 		
 		Report report = teacherService.getReportByStudentAndLecture(lectureId, studentId);
 		model.addAttribute("report", report);
-		return jspPath + "gradeReport";
+		//return jspPath + "gradeReport";
+		return "reports/" + "gradeReport";
 	}
 	
 	@RequestMapping(value = "/lecture/{lectureId}/{studentId}/grade", method = RequestMethod.POST)
