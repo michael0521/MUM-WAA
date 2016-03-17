@@ -1,5 +1,6 @@
 package mum.edu.cs.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -50,7 +51,7 @@ public class TeacherController {
 	
 	@RequestMapping("/lecture/{lectureId}/reports")
 	public String listReportsOfLecture(@PathVariable("lectureId") int lectureId, Model model, HttpServletRequest req){
-		List<Student> students = teacherService.getAllStudentsByLecture(lectureId);
+		List<Student> students =  teacherService.getAllStudentsByLecture(lectureId);
 		for(Student t : students){
 			Report r = rs.getReportByLectureAndStu(lectureId, t.getStudentId());
 			t.setReport(r);

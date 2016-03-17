@@ -42,6 +42,8 @@ public class ReportController extends BaseController{
 	int lecId;
 	int uid;
 	
+	int stuId = 0;
+	
 	static {
 //		initInfos.add(new TaskInfo());
 //		initInfos.add(new TaskInfo());
@@ -79,23 +81,26 @@ public class ReportController extends BaseController{
 	public String addReport(@ModelAttribute("newReport") Report report, Model model, @PathVariable int lectureId, HttpSession sesson ){
 		report.setTasks(initInfos);  
 		User u = (User) sesson.getAttribute("user");
-		uid = (int)u.getId();
+		uid = Integer.valueOf(u.getUsername());
 		lecId = lectureId;
-
 		Report existR = ps.getReportByLectureAndStu(lectureId, uid);
 		if(existR != null){
 			model.addAttribute("newReport", existR);
 		}
 		
+		model.addAttribute("role", User.getAuthRole(sesson));
 		
 		return fullPath("reportForm");
 	}
 	
 	@RequestMapping(value = "/addReport/{lectureId}/{studentId}", method = RequestMethod.GET)
 	public String addReport( Model model, @PathVariable int lectureId
-			, @PathVariable int studentId, RedirectAttributes ra){
+			, @PathVariable int studentId, RedirectAttributes ra,  HttpSession sesson ){
 //		report.setTasks(initInfos);  
 		
+		role = User.getAuthRole(sesson);
+		stuId = studentId;
+		lecId = lectureId;
 		Report existR = ps.getReportByLectureAndStu(lectureId, studentId);
 		if(existR != null){
 			model.addAttribute("newReport", existR);	
@@ -104,14 +109,17 @@ public class ReportController extends BaseController{
 //		lecId = lectureId;
 		System.out.println("lecId " + lectureId);
 		
+		if(role.equals("ROLE_STU")){
+			List<String> lectures = teacherService.getAllLectureTitles();
+			
+			ra.addFlashAttribute("lectures", lectures);
+			
+			return "redirect:/teacher/lectures";	
+		}
 		
-		List<String> lectures = teacherService.getAllLectureTitles();
+		model.addAttribute("role", role);
 		
-		ra.addFlashAttribute("lectures", lectures);
-		
-		return "redirect:/teacher/lectures";
-		
-//		return fullPath("reportForm");
+		return fullPath("reportForm");
 	}
 	
 	@RequestMapping(value="/saveReport", method = RequestMethod.POST)
@@ -120,7 +128,8 @@ public class ReportController extends BaseController{
 		
 		User u = (User) sesson.getAttribute("user");
 		report.setLectureId(lecId);
-		report.setStudentId(Integer.valueOf(u.getUsername()));
+		int sId = User.getAuthRole(sesson).equals("ROLE_STU")?Integer.valueOf(u.getUsername()):stuId;
+		report.setStudentId(sId);
 		
 		System.out.println("saved report " + report);
 		

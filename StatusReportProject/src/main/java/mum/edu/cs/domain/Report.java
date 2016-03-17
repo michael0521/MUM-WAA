@@ -60,7 +60,7 @@ public class Report implements Serializable {
 
 	public void setStudentId(int studentId) {
 		this.studentId = studentId;
-		grade = 5;
+//		grade = 5;
 	}
 
 //	@NotNull(message = "{grade.empty}")
