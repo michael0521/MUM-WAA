@@ -20,7 +20,7 @@
 
 
   <div class="panel">
-    <form action="/postLogin" method="post">
+    <form action="postLogin" method="post">
       <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
       <div class="input mt-10 mb-10">
         <span><spring:message code="message.login.account" />  &nbsp</span>
