@@ -57,9 +57,7 @@ public class LoginController {
     @RequestMapping(value = {"/welcome","/",""})
     public String welcome(Model model,Principal principal){
 
-
-
-
+        initData();
         if(principal != null && principal.getName() != null){
             User user = adminService.getUserByUsername(principal.getName());
             model.addAttribute("user",user);
